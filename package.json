@@ -1,0 +1,12 @@
+{
+  "name": "nomo-download-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-pages.mjs"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
+  }
+}
+

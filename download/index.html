@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="下载最新版 Nomo，支持 Windows 10/11 与 Apple Silicon Mac。" />
+    <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Nomo" />
+    <meta property="og:title" content="下载 Nomo {{LATEST_TAG}}" />
+    <meta property="og:description" content="Windows 与 macOS 的最新版 Nomo 安装包。" />
+    <meta property="og:url" content="https://nomo-md.pages.dev/download/" />
+    <link rel="canonical" href="https://nomo-md.pages.dev/download/" />
+    <link rel="icon" href="/assets/nomo-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>下载 Nomo {{LATEST_TAG}}</title>
+  </head>
+  <body class="inner-page download-page">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="/" aria-label="Nomo 首页">
+          <img src="/assets/nomo-logo.png" width="42" height="42" alt="" />
+          <span translate="no">Nomo</span>
+        </a>
+        <nav class="nav-links" aria-label="主导航">
+          <a href="/">产品</a>
+          <a href="/download/" aria-current="page">下载</a>
+          <a href="/releases/">版本说明</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button button-small" href="/releases/">查看更新说明</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero section-shell reveal">
+        <div>
+          <p class="eyebrow">当前稳定版 · {{LATEST_TAG}}</p>
+          <h1>选一个安装包，<br />现在开始写。</h1>
+          <p class="page-lede">发布于 {{RELEASE_DATE}}。页面会优先显示适合当前设备的版本，但所有平台始终可见。</p>
+        </div>
+        <div class="version-stamp" aria-label="当前版本 {{LATEST_VERSION}}">
+          <span>VERSION</span>
+          <strong>{{LATEST_VERSION}}</strong>
+        </div>
+      </section>
+
+      <section class="download-shell section-shell" aria-labelledby="package-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">安装与下载</p>
+          <h2 id="package-title">最新版，四种交付形式。</h2>
+          <p>Windows 推荐安装版，macOS 推荐 DMG。免安装包和应用压缩包作为备用选择。</p>
+        </div>
+        <div class="download-grid" data-download-grid>
+          {{DOWNLOAD_CARDS}}
+        </div>
+      </section>
+
+      <section class="install-notes section-shell" aria-labelledby="install-title">
+        <div class="install-note reveal">
+          <span class="note-index">01</span>
+          <div>
+            <h2 id="install-title">Windows 安装提示</h2>
+            <p>支持 Windows 10 / 11（x64）。当前安装包尚未购买发布者签名，SmartScreen 可能提示“未知发布者”；请核对下载域名后选择继续运行。</p>
+          </div>
+        </div>
+        <div class="install-note reveal">
+          <span class="note-index">02</span>
+          <div>
+            <h2>macOS 安装提示</h2>
+            <p>支持 macOS 12 及以上、Apple Silicon（arm64）。当前应用尚未经过 Apple 公证，Gatekeeper 首次打开时可能拦截；可在“系统设置 → 隐私与安全性”中确认打开。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="download-fallback section-shell reveal">
+        <div>
+          <h2>Pages 下载不顺利？</h2>
+          <p>GitHub Releases 保留相同版本的安装包和 MD5 校验文件，可作为备用下载源。</p>
+        </div>
+        <a class="text-link" href="https://github.com/nomo-md/nomo/releases/latest" target="_blank" rel="noreferrer">前往 GitHub Releases</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <img src="/assets/nomo-logo.png" width="36" height="36" alt="" />
+          <span translate="no">Nomo</span>
+        </div>
+        <p>让 Markdown 更接近写作本身。</p>
+        <nav aria-label="页脚导航">
+          <a href="/">产品</a>
+          <a href="/releases/">版本说明</a>
+          <a href="https://github.com/nomo-md/nomo/issues">问题反馈</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>
+

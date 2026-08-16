@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="查看 Nomo 各版本的完整更新说明。" />
+    <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Nomo" />
+    <meta property="og:title" content="Nomo 版本更新说明" />
+    <meta property="og:description" content="按时间查看 Nomo 的完整版本更新记录。" />
+    <meta property="og:url" content="https://nomo-md.pages.dev/releases/" />
+    <link rel="canonical" href="https://nomo-md.pages.dev/releases/" />
+    <link rel="icon" href="/assets/nomo-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Nomo 版本更新说明</title>
+  </head>
+  <body class="inner-page releases-page">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="/" aria-label="Nomo 首页">
+          <img src="/assets/nomo-logo.png" width="42" height="42" alt="" />
+          <span translate="no">Nomo</span>
+        </a>
+        <nav class="nav-links" aria-label="主导航">
+          <a href="/">产品</a>
+          <a href="/download/">下载</a>
+          <a href="/releases/" aria-current="page">版本说明</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button button-small" href="/download/">下载最新版</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero releases-hero section-shell reveal">
+        <div>
+          <p class="eyebrow">Release notes</p>
+          <h1>每一次变化，<br />都有记录。</h1>
+          <p class="page-lede">这里长期保留人工编写的版本说明。安装包只在下载页保留最新稳定版。</p>
+        </div>
+        <a class="history-jump text-link" href="#{{LATEST_TAG}}">从最新版本开始</a>
+      </section>
+
+      <section class="release-list section-shell" aria-label="版本更新记录">
+        {{RELEASE_HISTORY}}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <img src="/assets/nomo-logo.png" width="36" height="36" alt="" />
+          <span translate="no">Nomo</span>
+        </div>
+        <p>让 Markdown 更接近写作本身。</p>
+        <nav aria-label="页脚导航">
+          <a href="/">产品</a>
+          <a href="/download/">下载</a>
+          <a href="https://github.com/nomo-md/nomo">GitHub</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>
