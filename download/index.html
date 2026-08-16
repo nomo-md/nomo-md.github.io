@@ -41,40 +41,45 @@
       <section class="page-hero section-shell reveal">
         <div>
           <p class="eyebrow">当前稳定版 · {{LATEST_TAG}}</p>
-          <h1>选一个安装包，<br />现在开始写。</h1>
-          <p class="page-lede">发布于 {{RELEASE_DATE}}。页面会优先显示适合当前设备的版本，但所有平台始终可见。</p>
-        </div>
-        <div class="version-stamp" aria-label="当前版本 {{LATEST_VERSION}}">
-          <span>VERSION</span>
-          <strong>{{LATEST_VERSION}}</strong>
+          <h1>下载 Nomo。</h1>
+          <p class="page-lede">最新版发布于 {{RELEASE_DATE}}。选择对应平台和安装形式即可开始使用。</p>
         </div>
       </section>
 
       <section class="download-shell section-shell" aria-labelledby="package-title">
         <div class="section-heading reveal">
           <p class="eyebrow">安装与下载</p>
-          <h2 id="package-title">最新版，四种交付形式。</h2>
-          <p>Windows 推荐安装版，macOS 推荐 DMG。免安装包和应用压缩包作为备用选择。</p>
+          <h2 id="package-title">选择你的平台。</h2>
+          <p>Windows 和 macOS 的安装包均列于下方，可按自己的使用方式选择。</p>
         </div>
-        <div class="download-grid" data-download-grid>
-          {{DOWNLOAD_CARDS}}
-        </div>
-      </section>
+        <div class="platform-list">
+          <section class="platform-download reveal" aria-labelledby="windows-title">
+            <header class="platform-heading">
+              <span class="platform-index">01</span>
+              <div>
+                <h2 id="windows-title">Windows</h2>
+                <p>Windows 10 / 11 · x64</p>
+              </div>
+            </header>
+            <div class="package-list">
+              {{WINDOWS_DOWNLOADS}}
+            </div>
+            <p class="platform-warning"><strong>安装提示</strong> 当前安装包尚未购买发布者签名，SmartScreen 可能提示“未知发布者”；请核对下载域名后选择继续运行。免安装版不会注册 .md 文件关联。</p>
+          </section>
 
-      <section class="install-notes section-shell" aria-labelledby="install-title">
-        <div class="install-note reveal">
-          <span class="note-index">01</span>
-          <div>
-            <h2 id="install-title">Windows 安装提示</h2>
-            <p>支持 Windows 10 / 11（x64）。当前安装包尚未购买发布者签名，SmartScreen 可能提示“未知发布者”；请核对下载域名后选择继续运行。</p>
-          </div>
-        </div>
-        <div class="install-note reveal">
-          <span class="note-index">02</span>
-          <div>
-            <h2>macOS 安装提示</h2>
-            <p>支持 macOS 12 及以上、Apple Silicon（arm64）。当前应用尚未经过 Apple 公证，Gatekeeper 首次打开时可能拦截；可在“系统设置 → 隐私与安全性”中确认打开。</p>
-          </div>
+          <section class="platform-download reveal" aria-labelledby="macos-title">
+            <header class="platform-heading">
+              <span class="platform-index">02</span>
+              <div>
+                <h2 id="macos-title">macOS</h2>
+                <p>macOS 12+ · Apple Silicon（arm64）</p>
+              </div>
+            </header>
+            <div class="package-list">
+              {{MACOS_DOWNLOADS}}
+            </div>
+            <p class="platform-warning"><strong>安装提示</strong> 当前应用尚未经过 Apple 公证，Gatekeeper 首次打开时可能拦截；可在“系统设置 → 隐私与安全性”中确认打开。</p>
+          </section>
         </div>
       </section>
 
@@ -105,4 +110,3 @@
     <script src="/script.js" defer></script>
   </body>
 </html>
-

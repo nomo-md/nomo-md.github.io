@@ -19,7 +19,7 @@ const assetKinds = [
     platform: 'windows',
     label: 'Windows 安装版',
     action: '下载 EXE',
-    detail: '适合日常安装，会接入系统卸载入口。',
+    detail: '安装后接入系统卸载入口。',
     pattern: /^Nomo_\d+\.\d+\.\d+_x64-setup\.exe$/i,
   },
   {
@@ -35,7 +35,7 @@ const assetKinds = [
     platform: 'macos',
     label: 'macOS 磁盘映像',
     action: '下载 DMG',
-    detail: 'Apple Silicon（arm64）推荐安装方式。',
+    detail: '用于 Apple Silicon（arm64）设备。',
     pattern: /^Nomo_\d+\.\d+\.\d+_aarch64\.dmg$/i,
   },
   {
@@ -43,7 +43,7 @@ const assetKinds = [
     platform: 'macos',
     label: 'macOS 应用压缩包',
     action: '下载 TAR.GZ',
-    detail: 'Apple Silicon（arm64）备用下载。',
+    detail: '解压后获得 Nomo.app。',
     pattern: /^Nomo_(?:\d+\.\d+\.\d+_)?aarch64\.app\.tar\.gz$/i,
   },
 ];
@@ -179,24 +179,25 @@ async function downloadAsset(asset, destination) {
   await pipeline(response.body, createWriteStream(destination));
 }
 
-function renderDownloadCards(assets, tag) {
+function renderDownloadRows(assets, tag, platform) {
   return assets
-    .map((asset, index) => {
+    .filter((asset) => asset.platform === platform)
+    .map((asset) => {
       const href = `/downloads/${encodeURIComponent(tag)}/${encodeURIComponent(asset.name)}`;
-      const secondary = index === 1 || index === 3;
       return `
-        <article class="download-card" data-platform="${asset.platform}" data-kind="${asset.key}">
-          <div>
-            <p class="download-card-kicker">${asset.platform === 'windows' ? 'Windows 10 / 11' : 'macOS 12+'}</p>
-            <h2>${escapeHtml(asset.label)}</h2>
+        <article class="package-row" data-kind="${asset.key}">
+          <div class="package-description">
+            <h3>${escapeHtml(asset.label)}</h3>
             <p>${escapeHtml(asset.detail)}</p>
           </div>
-          <div class="download-card-action">
+          <div class="package-meta">
             <span>${escapeHtml(formatBytes(asset.size))}</span>
-            <a class="button${secondary ? ' button-secondary' : ''}" href="${href}" download>
-              ${escapeHtml(asset.action)}
-            </a>
+            <code>${escapeHtml(asset.name)}</code>
           </div>
+          <a class="package-action" href="${href}" download>
+            <span>${escapeHtml(asset.action)}</span>
+            <span aria-hidden="true">↓</span>
+          </a>
         </article>`;
     })
     .join('\n');
@@ -274,9 +275,9 @@ async function main() {
 
   await renderTemplate(path.join(projectRoot, 'download', 'index.html'), path.join(outputRoot, 'download', 'index.html'), {
     LATEST_TAG: escapeHtml(latestRelease.tag_name),
-    LATEST_VERSION: escapeHtml(latestRelease.tag_name.slice(1)),
     RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at)),
-    DOWNLOAD_CARDS: renderDownloadCards(assets, latestRelease.tag_name),
+    WINDOWS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'windows'),
+    MACOS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'macos'),
   });
 
   await renderTemplate(path.join(projectRoot, 'releases', 'index.html'), path.join(outputRoot, 'releases', 'index.html'), {
