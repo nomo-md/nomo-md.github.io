@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Nomo is a lightweight, modern Markdown desktop editor. Write with the focus of a document editor while keeping every file as standard Markdown."
+    />
+    <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:site_name" content="Nomo" />
+    <meta property="og:title" content="Nomo | Write like a document. Save as Markdown." />
+    <meta
+      property="og:description"
+      content="A lightweight, modern Markdown desktop editor that keeps syntax out of the way and your content in focus."
+    />
+    <meta property="og:url" content="https://nomo-md.pages.dev/en/" />
+    <meta property="og:image" content="https://nomo-md.pages.dev/assets/nomo-workspace.webp" />
+    <meta property="og:image:width" content="1800" />
+    <meta property="og:image:height" content="970" />
+    <meta property="og:image:alt" content="Nomo's semantic Markdown editing workspace" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://nomo-md.pages.dev/en/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://nomo-md.pages.dev/" />
+    <link rel="alternate" hreflang="en" href="https://nomo-md.pages.dev/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://nomo-md.pages.dev/" />
+    <link rel="icon" href="/assets/nomo-logo.png" />
+    <link rel="preload" href="/assets/nomo-workspace.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Nomo | Write like a document. Save as Markdown.</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Nomo",
+        "applicationCategory": "TextEditor",
+        "operatingSystem": "Windows, macOS",
+        "softwareVersion": "0.4.9",
+        "description": "A lightweight, modern Markdown desktop editor with semantic editing and source mode.",
+        "downloadUrl": "https://nomo-md.pages.dev/en/download/",
+        "codeRepository": "https://github.com/nomo-md/nomo",
+        "license": "https://github.com/nomo-md/nomo/blob/master/LICENSE"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="Nomo home">
+          <img src="/assets/nomo-logo.png" width="42" height="42" alt="" />
+          <span translate="no">Nomo</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#experience">Effortless Markdown</a>
+          <a href="#features">Features</a>
+          <a href="#open-source">Open source</a>
+          <a href="/en/download/">Download</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="language-link" href="/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">
+            中文
+          </a>
+          <a
+            class="icon-link"
+            href="https://github.com/nomo-md/nomo"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View Nomo on GitHub"
+          >
+            <img src="/assets/github.svg" width="20" height="20" alt="" />
+          </a>
+          <a class="button button-small" href="/en/download/">Download Nomo</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Markdown without the friction</p>
+          <h1>Write like a document.<br />Save as Markdown.</h1>
+          <p class="hero-lede">
+            Spend less time looking at syntax and more time writing. Move naturally between semantic editing and source mode in the same .md file.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="/en/download/">Download Nomo</a>
+            <a class="text-link" href="#experience">See how it works</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="window-frame">
+            <div class="window-bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <strong>sample.md</strong>
+            </div>
+            <img
+              src="/assets/nomo-workspace.webp"
+              srcset="/assets/nomo-workspace-900.webp 900w, /assets/nomo-workspace.webp 1800w"
+              sizes="(max-width: 760px) 150vw, (max-width: 1160px) calc(100vw - 48px), 48vw"
+              width="1800"
+              height="970"
+              alt="Nomo's semantic Markdown workspace with a file explorer, toolbar, document, and outline"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-section section-shell" id="experience">
+        <div class="mode-copy reveal">
+          <h2>Markdown stays. Syntax steps aside.</h2>
+          <p>
+            Edit headings, lists, tables, code, and diagrams directly. Switch to source mode whenever you need the raw text. Either way, you are always working with the same standard Markdown file.
+          </p>
+          <dl class="mode-facts">
+            <div>
+              <dt>While writing</dt>
+              <dd>Focus on your content like you would in any document</dd>
+            </div>
+            <div>
+              <dt>When needed</dt>
+              <dd>Inspect and maintain the Markdown source at any time</dd>
+            </div>
+            <div>
+              <dt>After saving</dt>
+              <dd>Keep it portable, versionable, and editable anywhere</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="mode-demo reveal">
+          <img
+            class="motion-media"
+            src="/assets/nomo-mode-demo.gif"
+            srcset="/assets/nomo-mode-demo-720.gif 720w, /assets/nomo-mode-demo.gif 1920w"
+            sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1160px) calc(100vw - 48px), 64vw"
+            width="1920"
+            height="1080"
+            alt="Nomo switching between semantic editing and source mode in the same Markdown document"
+            loading="lazy"
+          />
+          <img
+            class="motion-poster"
+            src="/assets/nomo-mode-poster.webp"
+            width="1200"
+            height="647"
+            alt="Nomo's semantic Markdown editing workspace"
+            loading="lazy"
+          />
+          <figcaption>One document, with semantic editing and source mode whenever you need them.</figcaption>
+        </figure>
+      </section>
+
+      <section class="lightweight-section section-shell reveal" aria-labelledby="lightweight-title">
+        <div class="size-statement">
+          <span>≈</span>
+          <strong>10&nbsp;MB</strong>
+        </div>
+        <div class="size-copy">
+          <h2 id="lightweight-title">Lightweight by design. Writing does not need another system.</h2>
+          <p>
+            The Windows installer is about 10&nbsp;MB. Nomo opens quickly, stays out of the way, and is ready whenever you want to capture or refine an idea.
+          </p>
+        </div>
+      </section>
+
+      <section class="feature-section section-shell" id="features">
+        <div class="section-heading reveal">
+          <h2>A modern editing experience, built around your files.</h2>
+          <p>No account and no new content silo. Nomo brings essential tools into a familiar desktop workflow.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-main reveal">
+            <div>
+              <p class="feature-label">Local first</p>
+              <h3>Your files stay in your hands</h3>
+              <p>
+                Open local Markdown, TXT, and JSON files directly. Autosave, pre-save snapshots, and external change alerts help keep every edit safe.
+              </p>
+            </div>
+            <div class="file-flow" aria-label="Local file workflow">
+              <span>Folder</span>
+              <i aria-hidden="true"></i>
+              <span>Nomo</span>
+              <i aria-hidden="true"></i>
+              <span>.md</span>
+            </div>
+          </article>
+
+          <article class="feature-side feature-code reveal">
+            <p class="feature-label">Beyond short notes</p>
+            <h3>A clear path through long documents</h3>
+            <p>
+              Document outlines, section reordering, find and replace, and reading-position recovery keep you oriented as your writing grows.
+            </p>
+          </article>
+
+          <article class="feature-side feature-export reveal">
+            <p class="feature-label">Ready to share</p>
+            <h3>From Markdown to a finished document</h3>
+            <p>Export to HTML or PDF with support for code, math, Mermaid diagrams, and local images.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="desktop-section section-shell reveal">
+        <div class="desktop-copy">
+          <h2>Made for writing on the desktop.</h2>
+          <p>
+            Available for Windows and macOS. Folders, tabs, compact windows, and system integration make Markdown a natural part of your everyday workflow.
+          </p>
+        </div>
+        <div class="platforms" aria-label="Supported platforms">
+          <span>Windows</span>
+          <span>macOS</span>
+        </div>
+      </section>
+
+      <section class="open-section section-shell" id="open-source">
+        <div class="open-mark reveal" aria-hidden="true">&lt;/&gt;</div>
+        <div class="open-copy reveal">
+          <p class="eyebrow">Open source and evolving</p>
+          <h2>Transparent software. Portable files.</h2>
+          <p>
+            Nomo's source code is available on GitHub. Follow development, report an issue, or continue editing your Markdown with any other tool at any time.
+          </p>
+          <a class="text-link" href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer">
+            View on GitHub
+          </a>
+        </div>
+      </section>
+
+      <section class="download-section section-shell reveal" id="download">
+        <div>
+          <h2>Open a Markdown file and start writing.</h2>
+          <p>Lightweight, modern, and frictionless. Nomo is available for Windows and macOS.</p>
+        </div>
+        <a class="button" href="/en/download/">Download Nomo</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <img src="/assets/nomo-logo.png" width="36" height="36" alt="" />
+          <span translate="no">Nomo</span>
+        </div>
+        <p>Markdown, closer to the act of writing.</p>
+        <nav aria-label="Footer navigation">
+          <a href="https://github.com/nomo-md/nomo">GitHub</a>
+          <a href="/releases/">Release notes</a>
+          <a href="https://github.com/nomo-md/nomo/issues">Report an issue</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

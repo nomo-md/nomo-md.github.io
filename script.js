@@ -29,6 +29,10 @@ try {
 if (hashTarget instanceof HTMLDetailsElement) hashTarget.open = true;
 
 const copyButtons = document.querySelectorAll('[data-copy-text]');
+const pageLanguage = document.documentElement.lang.toLowerCase();
+const copyFeedback = pageLanguage.startsWith('en')
+  ? { success: 'Copied', failure: 'Copy manually' }
+  : { success: '已复制', failure: '请手动复制' };
 
 copyButtons.forEach((button) => {
   button.addEventListener('click', async () => {
@@ -52,9 +56,9 @@ copyButtons.forEach((button) => {
         input.remove();
       }
 
-      button.textContent = '已复制';
+      button.textContent = copyFeedback.success;
     } catch {
-      button.textContent = '请手动复制';
+      button.textContent = copyFeedback.failure;
     }
 
     window.setTimeout(() => {

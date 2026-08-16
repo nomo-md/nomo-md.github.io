@@ -1,45 +1,45 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="下载最新版 Nomo，支持 Windows 10/11 与 Apple Silicon Mac。" />
+    <meta name="description" content="Download the latest version of Nomo for Windows 10/11 or Apple Silicon Mac." />
     <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="zh_CN" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
     <meta property="og:site_name" content="Nomo" />
-    <meta property="og:title" content="下载 Nomo {{LATEST_TAG}}" />
-    <meta property="og:description" content="Windows 与 macOS 的最新版 Nomo 安装包。" />
-    <meta property="og:url" content="https://nomo-md.pages.dev/download/" />
-    <link rel="canonical" href="https://nomo-md.pages.dev/download/" />
+    <meta property="og:title" content="Download Nomo {{LATEST_TAG}}" />
+    <meta property="og:description" content="Get the latest Nomo installer for Windows or macOS." />
+    <meta property="og:url" content="https://nomo-md.pages.dev/en/download/" />
+    <link rel="canonical" href="https://nomo-md.pages.dev/en/download/" />
     <link rel="alternate" hreflang="zh-CN" href="https://nomo-md.pages.dev/download/" />
     <link rel="alternate" hreflang="en" href="https://nomo-md.pages.dev/en/download/" />
     <link rel="alternate" hreflang="x-default" href="https://nomo-md.pages.dev/download/" />
     <link rel="icon" href="/assets/nomo-logo.png" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>下载 Nomo {{LATEST_TAG}}</title>
+    <title>Download Nomo {{LATEST_TAG}}</title>
   </head>
   <body class="inner-page download-page">
-    <a class="skip-link" href="#main">跳到主要内容</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="/" aria-label="Nomo 首页">
+        <a class="brand" href="/en/" aria-label="Nomo home">
           <img src="/assets/nomo-logo.png" width="42" height="42" alt="" />
           <span translate="no">Nomo</span>
         </a>
-        <nav class="nav-links" aria-label="主导航">
-          <a href="/">产品</a>
-          <a href="/download/" aria-current="page">下载</a>
-          <a href="/releases/">版本说明</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/en/">Product</a>
+          <a href="/en/download/" aria-current="page">Download</a>
+          <a href="/releases/">Release notes</a>
         </nav>
         <div class="nav-actions">
-          <a class="language-link" href="/en/download/" lang="en" hreflang="en" aria-label="Switch to English">
-            EN
+          <a class="language-link" href="/download/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">
+            中文
           </a>
-          <a class="button button-small" href="/releases/">查看更新说明</a>
+          <a class="button button-small" href="/releases/">View release notes</a>
         </div>
       </div>
     </header>
@@ -47,17 +47,17 @@
     <main id="main">
       <section class="page-hero section-shell reveal">
         <div>
-          <p class="eyebrow">当前稳定版 · {{LATEST_TAG}}</p>
-          <h1>下载 Nomo。</h1>
-          <p class="page-lede">最新版发布于 {{RELEASE_DATE}}。选择对应平台和安装形式即可开始使用。</p>
+          <p class="eyebrow">Current stable release · {{LATEST_TAG}}</p>
+          <h1>Download Nomo.</h1>
+          <p class="page-lede">Released on {{RELEASE_DATE}}. Choose your platform and preferred package to get started.</p>
         </div>
       </section>
 
       <section class="download-shell section-shell" aria-labelledby="package-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">安装与下载</p>
-          <h2 id="package-title">选择你的平台。</h2>
-          <p>Windows 和 macOS 的获取方式均列于下方，可按自己的使用方式选择。</p>
+          <p class="eyebrow">Install and download</p>
+          <h2 id="package-title">Choose your platform.</h2>
+          <p>Windows and macOS downloads are listed below, with options for different installation preferences.</p>
         </div>
         <div class="platform-list">
           <section class="platform-download reveal" aria-labelledby="windows-title">
@@ -72,23 +72,25 @@
               <article class="package-row" data-kind="microsoft-store">
                 <div class="package-description">
                   <h3>Microsoft Store</h3>
-                  <p>由 Microsoft Store 安装并管理后续更新。</p>
+                  <p>Install Nomo from Microsoft Store and receive future updates there.</p>
                 </div>
                 <div class="package-meta">
-                  <span>官方商店渠道</span>
+                  <span>Official store channel</span>
                   <code>Product ID · 9P1G24GK650Z</code>
                 </div>
                 <div class="package-actions">
                   <a class="package-action" href="https://apps.microsoft.com/detail/9P1G24GK650Z" target="_blank" rel="noreferrer">
-                    <span>查看商店</span>
+                    <span>View in Store</span>
                     <span aria-hidden="true">↗</span>
                   </a>
-                  <a class="package-subaction" href="ms-windows-store://pdp/?productid=9P1G24GK650Z">直接打开商店</a>
+                  <a class="package-subaction" href="ms-windows-store://pdp/?productid=9P1G24GK650Z">Open Microsoft Store</a>
                 </div>
               </article>
               {{WINDOWS_DOWNLOADS}}
             </div>
-            <p class="platform-warning"><strong>安装提示</strong> 当前安装包尚未购买发布者签名，SmartScreen 可能提示“未知发布者”；请核对下载域名后选择继续运行。免安装版不会注册 .md 文件关联。</p>
+            <p class="platform-warning">
+              <strong>Installation note</strong> The current installer is not yet signed with a publisher certificate, so SmartScreen may show an “Unknown publisher” warning. Verify the download domain before continuing. The portable version does not register .md file associations.
+            </p>
           </section>
 
           <section class="platform-download reveal" aria-labelledby="macos-title">
@@ -96,39 +98,41 @@
               <span class="platform-index">02</span>
               <div>
                 <h2 id="macos-title">macOS</h2>
-                <p>macOS 12+ · Apple Silicon（arm64）</p>
+                <p>macOS 12+ · Apple Silicon (arm64)</p>
               </div>
             </header>
             <div class="package-list">
               {{MACOS_DOWNLOADS}}
             </div>
-            <p class="platform-warning"><strong>安装提示</strong> 当前应用尚未经过 Apple 公证，Gatekeeper 首次打开时可能拦截；可在“系统设置 → 隐私与安全性”中确认打开。</p>
+            <p class="platform-warning">
+              <strong>Installation note</strong> The current app has not yet been notarized by Apple, so Gatekeeper may block it the first time. You can allow it from System Settings → Privacy &amp; Security.
+            </p>
           </section>
         </div>
       </section>
 
       <section class="alternate-sources section-shell reveal" aria-labelledby="source-title">
         <div class="section-heading">
-          <p class="eyebrow">备用渠道</p>
-          <h2 id="source-title">其他下载源。</h2>
-          <p>Pages 下载不顺利时，可以使用下面两个外部渠道。</p>
+          <p class="eyebrow">Alternative sources</p>
+          <h2 id="source-title">Other places to download.</h2>
+          <p>If the direct download is slow or unavailable, try one of these external sources.</p>
         </div>
 
         <div class="source-list">
           <article class="source-row">
             <div class="source-description">
-              <h3>蓝奏云</h3>
-              <p>国内网络备用下载，打开共享文件夹后选择对应安装包。</p>
+              <h3>Lanzou Cloud</h3>
+              <p>An alternative mirror for users in mainland China. Open the shared folder and choose the matching package.</p>
             </div>
             <div class="package-meta source-meta">
-              <span>访问密码</span>
+              <span>Access code</span>
               <div class="password-line">
                 <code>nomo</code>
-                <button type="button" data-copy-text="nomo">复制密码</button>
+                <button type="button" data-copy-text="nomo">Copy code</button>
               </div>
             </div>
             <a class="package-action" href="https://wwbov.lanzout.com/b01eupf3af" target="_blank" rel="noreferrer">
-              <span>打开蓝奏云</span>
+              <span>Open Lanzou Cloud</span>
               <span aria-hidden="true">↗</span>
             </a>
           </article>
@@ -136,20 +140,20 @@
           <article class="source-row">
             <div class="source-description">
               <h3>GitHub Releases</h3>
-              <p>查看 Nomo 的完整版本发布归档。</p>
+              <p>Browse Nomo's complete release archive.</p>
             </div>
             <div class="package-meta source-meta">
-              <span>版本归档</span>
+              <span>Release archive</span>
               <code>github.com/nomo-md/nomo</code>
             </div>
             <a class="package-action" href="https://github.com/nomo-md/nomo/releases/latest" target="_blank" rel="noreferrer">
-              <span>打开 GitHub</span>
+              <span>Open GitHub</span>
               <span aria-hidden="true">↗</span>
             </a>
           </article>
         </div>
 
-        <p class="source-note">第三方下载源中的文件版本，请以本页标注的当前稳定版为准。</p>
+        <p class="source-note">For third-party mirrors, use the stable version number shown at the top of this page as your reference.</p>
       </section>
     </main>
 
@@ -159,11 +163,11 @@
           <img src="/assets/nomo-logo.png" width="36" height="36" alt="" />
           <span translate="no">Nomo</span>
         </div>
-        <p>让 Markdown 更接近写作本身。</p>
-        <nav aria-label="页脚导航">
-          <a href="/">产品</a>
-          <a href="/releases/">版本说明</a>
-          <a href="https://github.com/nomo-md/nomo/issues">问题反馈</a>
+        <p>Markdown, closer to the act of writing.</p>
+        <nav aria-label="Footer navigation">
+          <a href="/en/">Product</a>
+          <a href="/releases/">Release notes</a>
+          <a href="https://github.com/nomo-md/nomo/issues">Report an issue</a>
         </nav>
       </div>
     </footer>

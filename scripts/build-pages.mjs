@@ -18,32 +18,44 @@ const assetKinds = [
     key: 'windows-installer',
     platform: 'windows',
     label: 'Windows 安装版',
+    labelEn: 'Windows installer',
     action: '下载 EXE',
+    actionEn: 'Download EXE',
     detail: '安装后接入系统卸载入口。',
+    detailEn: 'Installs Nomo and adds it to the system uninstall menu.',
     pattern: /^Nomo_\d+\.\d+\.\d+_x64-setup\.exe$/i,
   },
   {
     key: 'windows-portable',
     platform: 'windows',
     label: 'Windows 免安装版',
+    labelEn: 'Windows portable',
     action: '下载 ZIP',
+    actionEn: 'Download ZIP',
     detail: '解压即用，不会注册 .md 文件关联。',
+    detailEn: 'Extract and run. This version does not register .md file associations.',
     pattern: /^Nomo_\d+\.\d+\.\d+_x64\.zip$/i,
   },
   {
     key: 'macos-dmg',
     platform: 'macos',
     label: 'macOS 磁盘映像',
+    labelEn: 'macOS disk image',
     action: '下载 DMG',
+    actionEn: 'Download DMG',
     detail: '用于 Apple Silicon（arm64）设备。',
+    detailEn: 'For Apple Silicon (arm64) Macs.',
     pattern: /^Nomo_\d+\.\d+\.\d+_aarch64\.dmg$/i,
   },
   {
     key: 'macos-archive',
     platform: 'macos',
     label: 'macOS 应用压缩包',
+    labelEn: 'macOS app archive',
     action: '下载 TAR.GZ',
+    actionEn: 'Download TAR.GZ',
     detail: '解压后获得 Nomo.app。',
+    detailEn: 'Extract the archive to get Nomo.app.',
     pattern: /^Nomo_(?:\d+\.\d+\.\d+_)?aarch64\.app\.tar\.gz$/i,
   },
 ];
@@ -113,8 +125,8 @@ function formatBytes(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-function formatDate(dateText) {
-  return new Intl.DateTimeFormat('zh-CN', {
+function formatDate(dateText, locale = 'zh-CN') {
+  return new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -179,7 +191,8 @@ async function downloadAsset(asset, destination) {
   await pipeline(response.body, createWriteStream(destination));
 }
 
-function renderDownloadRows(assets, tag, platform) {
+function renderDownloadRows(assets, tag, platform, locale = 'zh-CN') {
+  const english = locale === 'en-US';
   return assets
     .filter((asset) => asset.platform === platform)
     .map((asset) => {
@@ -187,15 +200,15 @@ function renderDownloadRows(assets, tag, platform) {
       return `
         <article class="package-row" data-kind="${asset.key}">
           <div class="package-description">
-            <h3>${escapeHtml(asset.label)}</h3>
-            <p>${escapeHtml(asset.detail)}</p>
+            <h3>${escapeHtml(english ? asset.labelEn : asset.label)}</h3>
+            <p>${escapeHtml(english ? asset.detailEn : asset.detail)}</p>
           </div>
           <div class="package-meta">
             <span>${escapeHtml(formatBytes(asset.size))}</span>
             <code>${escapeHtml(asset.name)}</code>
           </div>
           <a class="package-action" href="${href}" download>
-            <span>${escapeHtml(asset.action)}</span>
+            <span>${escapeHtml(english ? asset.actionEn : asset.action)}</span>
             <span aria-hidden="true">↓</span>
           </a>
         </article>`;
@@ -273,12 +286,34 @@ async function main() {
     'utf8',
   );
 
+  const englishHomepage = await readFile(path.join(projectRoot, 'en', 'index.html'), 'utf8');
+  await mkdir(path.join(outputRoot, 'en'), { recursive: true });
+  await writeFile(
+    path.join(outputRoot, 'en', 'index.html'),
+    englishHomepage.replace(
+      /"softwareVersion":\s*"[^"]+"/,
+      `"softwareVersion": "${latestRelease.tag_name.slice(1)}"`,
+    ),
+    'utf8',
+  );
+
   await renderTemplate(path.join(projectRoot, 'download', 'index.html'), path.join(outputRoot, 'download', 'index.html'), {
     LATEST_TAG: escapeHtml(latestRelease.tag_name),
     RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at)),
     WINDOWS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'windows'),
     MACOS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'macos'),
   });
+
+  await renderTemplate(
+    path.join(projectRoot, 'en', 'download', 'index.html'),
+    path.join(outputRoot, 'en', 'download', 'index.html'),
+    {
+      LATEST_TAG: escapeHtml(latestRelease.tag_name),
+      RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at, 'en-US')),
+      WINDOWS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'windows', 'en-US'),
+      MACOS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'macos', 'en-US'),
+    },
+  );
 
   await renderTemplate(path.join(projectRoot, 'releases', 'index.html'), path.join(outputRoot, 'releases', 'index.html'), {
     LATEST_TAG: escapeHtml(latestRelease.tag_name),

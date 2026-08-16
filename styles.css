@@ -143,7 +143,8 @@ a {
   gap: 10px;
 }
 
-.icon-link {
+.icon-link,
+.language-link {
   display: grid;
   width: 48px;
   height: 48px;
@@ -157,9 +158,18 @@ a {
     background-color 180ms ease;
 }
 
-.icon-link:hover {
+.language-link {
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+}
+
+.icon-link:hover,
+.language-link:hover {
   border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
   background: var(--surface-blue);
+  color: var(--accent);
 }
 
 .button {
@@ -189,7 +199,8 @@ a {
 }
 
 .button:active,
-.icon-link:active {
+.icon-link:active,
+.language-link:active {
   transform: translateY(1px) scale(0.98);
 }
 
@@ -1114,7 +1125,14 @@ h3 {
   }
 
   .button-small {
-    min-height: 48px;
+    min-height: 42px;
+    padding-inline: 12px;
+  }
+
+  .icon-link,
+  .language-link {
+    width: 42px;
+    height: 42px;
   }
 
   .hero {
@@ -1314,6 +1332,7 @@ h3 {
 @media (prefers-reduced-motion: no-preference) {
   .button,
   .icon-link,
+  .language-link,
   .text-link::after {
     will-change: transform;
   }
