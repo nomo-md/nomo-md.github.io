@@ -27,3 +27,38 @@ try {
   hashTarget = null;
 }
 if (hashTarget instanceof HTMLDetailsElement) hashTarget.open = true;
+
+const copyButtons = document.querySelectorAll('[data-copy-text]');
+
+copyButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    const originalLabel = button.textContent;
+
+    try {
+      const value = button.dataset.copyText;
+      if (!value) return;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = value;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.append(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+
+      button.textContent = '已复制';
+    } catch {
+      button.textContent = '请手动复制';
+    }
+
+    window.setTimeout(() => {
+      button.textContent = originalLabel;
+    }, 1800);
+  });
+});
