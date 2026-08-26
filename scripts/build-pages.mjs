@@ -9,6 +9,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const outputRoot = path.join(projectRoot, 'dist');
 const repository = 'nomo-md/nomo';
 const githubApi = `https://api.github.com/repos/${repository}`;
+const githubToken = process.env.GITHUB_TOKEN?.trim() || process.env.GH_TOKEN?.trim();
 const pagesFileLimit = 25 * 1024 * 1024;
 const releaseNotesPattern = /^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?\.md$/;
 const markdown = new MarkdownIt({ html: false, linkify: true, typographer: true });
@@ -70,16 +71,31 @@ async function exists(target) {
 }
 
 async function fetchJson(url) {
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'nomo-pages-build',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+  if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
+
   const response = await fetch(url, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'nomo-pages-build',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
+    headers,
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub 请求失败：${response.status} ${url}`);
+    const remaining = response.headers.get('x-ratelimit-remaining');
+    const reset = response.headers.get('x-ratelimit-reset');
+    const retryAfter = response.headers.get('retry-after');
+    const rateLimitDetails = [
+      remaining === null ? null : `remaining=${remaining}`,
+      reset === null ? null : `reset=${new Date(Number(reset) * 1000).toISOString()}`,
+      retryAfter === null ? null : `retry-after=${retryAfter}s`,
+    ]
+      .filter(Boolean)
+      .join(', ');
+    const responseBody = (await response.text()).replace(/\s+/g, ' ').trim().slice(0, 300);
+    const details = [rateLimitDetails, responseBody].filter(Boolean).join('; ');
+    throw new Error(`GitHub 请求失败：${response.status} ${url}${details ? ` (${details})` : ''}`);
   }
 
   return response.json();
