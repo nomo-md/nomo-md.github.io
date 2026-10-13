@@ -1,0 +1,1067 @@
+#nomo-site {
+  --n-page: #26303d;
+  --n-surface: #2d3947;
+  --n-editor: #303c4b;
+  --n-chrome: #293441;
+  --n-menu: #364453;
+  --n-text: #f0f3f7;
+  --n-body: #d3dce6;
+  --n-muted: #afbdcc;
+  --n-border: #465565;
+  --n-grid: #526274;
+  --n-accent: #cad6e5;
+  --n-glow: #a0b6d51c;
+  --n-shadow: #1320313d;
+  --nv-pad: clamp(20px, 6vw, 64px);
+  --nv-title-max: 56px;
+  width: 100%;
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse at 14% 0%, #617c9824, transparent 40%),
+    radial-gradient(ellipse at 100% 58%, #35587a20, transparent 44%),
+    var(--n-page);
+  color: var(--n-text);
+  font-family: var(--font-site);
+  font-size: 15px;
+  line-height: 1.7;
+}
+#nomo-site * {
+  box-sizing: border-box;
+}
+#nomo-site [hidden] {
+  display: none !important;
+}
+#nomo-site a {
+  color: inherit;
+  text-decoration: none;
+}
+#nomo-site button {
+  font-family: inherit;
+}
+#nomo-site a:focus-visible,
+#nomo-site button:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 4px;
+}
+#nomo-site [id] {
+  scroll-margin-top: 24px;
+}
+#nomo-site h1,
+#nomo-site h2,
+#nomo-site h3,
+#nomo-site h4,
+#nomo-site p {
+  margin: 0;
+}
+#nomo-site h1,
+#nomo-site h2,
+#nomo-site h3,
+#nomo-site h4,
+#nomo-site strong {
+  font-weight: 500;
+}
+#nomo-site .nv-shell {
+  padding-inline: var(--nv-pad);
+}
+#nomo-site .nv-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding-block: 23px;
+  border-bottom: 1px solid #ffffff09;
+}
+#nomo-site .nv-wordmark {
+  font-size: 21px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 550;
+  letter-spacing: -0.65px;
+}
+#nomo-site .nv-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--n-muted);
+}
+#nomo-site .nv-nav-links a:hover,
+#nomo-site .nv-link:hover,
+#nomo-site .nv-footer a:hover {
+  color: var(--n-text);
+}
+#nomo-site .nv-nav-action {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+#nomo-site .nv-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 9px 17px;
+  border-radius: 7px;
+  border: 1px solid var(--n-border);
+  background: var(--n-surface);
+  color: var(--n-text);
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background-color 180ms,
+    border-color 180ms,
+    transform 180ms;
+}
+#nomo-site .nv-button:hover {
+  background: #242a33;
+  border-color: #596575;
+  transform: translateY(-1px);
+}
+#nomo-site .nv-button:active {
+  transform: translateY(1px);
+}
+#nomo-site .nv-button-primary {
+  background: #e5e9ef;
+  color: #2a3442;
+  border-color: #e5e9ef;
+}
+#nomo-site .nv-button-primary:hover {
+  background: #f6f8fb;
+  border-color: #f6f8fb;
+}
+#nomo-site .nv-button-small {
+  min-height: 34px;
+  padding: 5px 12px;
+  font-size: 12px;
+}
+#nomo-site .nv-button:disabled {
+  opacity: 0.55;
+  transform: none;
+}
+#nomo-site .nv-button i,
+#nomo-site .nv-link .nv-icon {
+  width: 15px;
+  height: 15px;
+}
+#nomo-site .nv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--n-muted);
+  font-size: 13px;
+}
+#nomo-site .nv-hero {
+  padding-top: 55px;
+  padding-bottom: 61px;
+  position: relative;
+}
+#nomo-site .nv-hero-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: end;
+}
+#nomo-site .nv-hero-meta {
+  padding-bottom: 4px;
+}
+#nomo-site .nv-hero-meta .nv-lede {
+  margin-top: 0;
+}
+#nomo-site .nv-release-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #bcc5d1;
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+#nomo-site .nv-release-link::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b8c6d9;
+}
+#nomo-site .nv-hero h1 {
+  font-size: clamp(32px, 6vw, var(--nv-title-max));
+  line-height: 1.16;
+  letter-spacing: -1.6px;
+  text-wrap: balance;
+}
+#nomo-site .nv-hero h1 .nv-title-soft {
+  color: #b8c0cc;
+}
+#nomo-site .nv-lede {
+  max-width: 560px;
+  margin-top: 21px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--n-muted);
+}
+#nomo-site .nv-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+#nomo-site .nv-trust-strip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 21px;
+  color: var(--n-muted);
+  font-size: 11px;
+}
+#nomo-site .nv-trust-strip span + span {
+  border-left: 1px solid var(--n-border);
+  padding-left: 14px;
+}
+#nomo-site .nv-hero-demo {
+  margin-top: 40px;
+  padding: 7px 0 0;
+  perspective: 1600px;
+  position: relative;
+}
+#nomo-site .nv-hero-demo::before {
+  content: "";
+  position: absolute;
+  inset: -25px -15px 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 40%, #8296b510, transparent 70%);
+}
+#nomo-site .n-window {
+  --rx: 0deg;
+  --ry: 0deg;
+  --sx: 50%;
+  --sy: 35%;
+  --light: 0;
+  position: relative;
+  background: var(--n-surface);
+  border: 1px solid var(--n-border);
+  border-radius: 11px;
+  box-shadow: 0 20px 55px var(--n-shadow);
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 200ms ease-out;
+}
+#nomo-site .n-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(
+    210px circle at var(--sx) var(--sy),
+    var(--n-glow),
+    transparent 80%
+  );
+  opacity: var(--light);
+  transition: opacity 250ms;
+}
+#nomo-site .n-window::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(
+      160px circle at var(--sx) var(--sy),
+      var(--n-accent),
+      transparent 90%
+    )
+    border-box;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: calc(var(--light) * 0.5);
+  transition: opacity 250ms;
+}
+#nomo-site .n-tab {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 13px 17px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--n-body);
+  border-bottom: 1px solid var(--n-border);
+  background: var(--n-chrome);
+  border-radius: 10px 10px 0 0;
+}
+#nomo-site .n-tab .nv-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--n-muted);
+}
+#nomo-site .n-semantic {
+  margin-left: auto;
+  color: var(--n-muted);
+}
+#nomo-site .nv-app-layout {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr);
+}
+#nomo-site .nv-file-sidebar {
+  background: #1a1e25;
+  border-right: 1px solid var(--n-border);
+  padding: 17px 8px;
+  border-radius: 0 0 0 10px;
+  font-size: 11px;
+  color: var(--n-muted);
+}
+#nomo-site .nv-folder-title {
+  padding: 0 7px 13px;
+  font-size: 12px;
+  color: var(--n-body);
+}
+#nomo-site .nv-file-row {
+  margin: 3px 0;
+  padding: 7px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+#nomo-site .nv-file-row.nv-file-active {
+  color: #e5eaf2;
+  background: #2b3340;
+}
+#nomo-site .nv-writing-pane {
+  min-width: 0;
+}
+#nomo-site .n-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--n-border);
+  color: var(--n-muted);
+  background: var(--n-surface);
+  font-size: 13px;
+  line-height: 1.1;
+}
+#nomo-site .n-toolbar .nv-icon {
+  width: 16px;
+  height: 16px;
+}
+#nomo-site .n-tool-divider {
+  width: 1px;
+  height: 15px;
+  background: var(--n-border);
+}
+#nomo-site .n-paper {
+  background: var(--n-editor);
+  border-radius: 0 0 10px 0;
+}
+#nomo-site .n-writing-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  font-family: inherit;
+}
+#nomo-site .n-writing-svg text {
+  fill: var(--n-body);
+  font-size: 16px;
+  font-weight: 400;
+}
+#nomo-site .n-writing-svg .n-doc-title {
+  fill: var(--n-text);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+}
+#nomo-site .n-writing-svg .n-raw-title {
+  fill: var(--n-body);
+  font-size: 16px;
+}
+#nomo-site .n-writing-svg .n-bullet {
+  fill: var(--n-muted);
+}
+#nomo-site .n-writing-svg .n-caret {
+  fill: var(--n-accent);
+}
+#nomo-site .n-writing-svg .n-table-back {
+  fill: var(--n-editor);
+}
+#nomo-site .n-writing-svg .n-table-head {
+  fill: #2a3039;
+}
+#nomo-site .n-writing-svg .n-table-grid {
+  fill: none;
+  stroke: var(--n-grid);
+  stroke-width: 1;
+}
+#nomo-site .n-writing-svg .n-cell {
+  fill: var(--n-body);
+  font-size: 14px;
+}
+#nomo-site .n-writing-svg .n-menu-back {
+  fill: var(--n-menu);
+  stroke: var(--n-grid);
+  stroke-width: 1;
+}
+#nomo-site .n-writing-svg .n-menu-select {
+  fill: #3b4655;
+}
+#nomo-site .n-writing-svg .n-menu-text {
+  fill: var(--n-body);
+  font-size: 13px;
+}
+#nomo-site .n-writing-svg .n-menu-selected-text {
+  fill: var(--n-text);
+  font-weight: 500;
+}
+#nomo-site .nv-demo-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 13px;
+  color: var(--n-muted);
+  font-size: 11px;
+}
+#nomo-site .nv-demo-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#nomo-site .nv-section {
+  padding-block: 68px;
+  border-top: 1px solid #ffffff0b;
+}
+#nomo-site .nv-eyebrow {
+  color: #aab6c6;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+#nomo-site .nv-section h2 {
+  font-size: clamp(25px, 4vw, 34px);
+  line-height: 1.35;
+  letter-spacing: -0.85px;
+  text-wrap: balance;
+}
+#nomo-site .nv-section-lede {
+  max-width: 500px;
+  margin-top: 15px;
+  color: var(--n-muted);
+  font-size: 14px;
+}
+#nomo-site .nv-feature-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+#nomo-site .nv-feature {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-alpha: 0;
+  padding: 25px;
+  background: #2c3745;
+  border: 1px solid var(--n-border);
+  border-radius: 10px;
+  position: relative;
+  min-width: 0;
+}
+#nomo-site .nv-feature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    170px circle at var(--spot-x) var(--spot-y),
+    #9badc71d,
+    transparent 85%
+  );
+  opacity: var(--spot-alpha);
+  transition: opacity 250ms;
+}
+#nomo-site .nv-feature h3 {
+  margin-top: 9px;
+  font-size: 20px;
+  line-height: 1.45;
+  letter-spacing: -0.4px;
+}
+#nomo-site .nv-feature > p {
+  margin-top: 11px;
+  color: var(--n-muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+#nomo-site .nv-feature-label {
+  color: #b4bfcd;
+  font-size: 11px;
+}
+#nomo-site .nv-mode-demo {
+  margin-top: 24px;
+  background: #232932;
+  border: 1px solid #3c4551;
+  border-radius: 7px;
+}
+#nomo-site .nv-mode-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--n-border);
+  color: var(--n-muted);
+  font-size: 11px;
+}
+#nomo-site .nv-mode-tabs {
+  display: flex;
+  gap: 3px;
+}
+#nomo-site .nv-mode-button {
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--n-muted);
+  padding: 5px 8px;
+  font-size: 11px;
+}
+#nomo-site .nv-mode-button[aria-pressed="true"] {
+  background: #38414e;
+  color: var(--n-text);
+}
+#nomo-site .nv-mode-body {
+  padding: 18px;
+  min-height: 178px;
+}
+#nomo-site .nv-mode-body h4 {
+  font-size: 17px;
+  color: var(--n-text);
+  margin-bottom: 10px;
+}
+#nomo-site .nv-mode-body ul {
+  padding-left: 18px;
+  margin: 8px 0 16px;
+  font-size: 12px;
+  color: var(--n-body);
+}
+#nomo-site .nv-mode-body pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #c4cedb;
+  font:
+    12px/1.9 "Cascadia Code",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+#nomo-site .nv-mini-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11px;
+  color: var(--n-body);
+}
+#nomo-site .nv-mini-table th,
+#nomo-site .nv-mini-table td {
+  border: 1px solid #465160;
+  padding: 6px 8px;
+  text-align: left;
+  font-weight: 400;
+}
+#nomo-site .nv-mini-table th {
+  background: #2d3541;
+}
+#nomo-site .nv-outline-demo {
+  margin-top: 24px;
+  background: #21262e;
+  border: 1px solid #3c4551;
+  border-radius: 7px;
+  padding: 13px;
+}
+#nomo-site .nv-outline-caption {
+  font-size: 11px;
+  color: var(--n-muted);
+  margin-bottom: 12px;
+}
+#nomo-site .nv-outline-button {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 0;
+  color: var(--n-muted);
+  padding: 9px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+#nomo-site .nv-outline-button.nv-selected {
+  color: var(--n-text);
+  background: #343d49;
+}
+#nomo-site .nv-outline-button .nv-icon {
+  width: 12px;
+  height: 12px;
+}
+#nomo-site .nv-outline-result {
+  padding: 14px 10px 4px;
+  margin-top: 10px;
+  border-top: 1px solid var(--n-border);
+  color: var(--n-body);
+  font-size: 12px;
+  min-height: 64px;
+}
+#nomo-site .nv-focus-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 38px;
+  align-items: center;
+}
+#nomo-site .nv-focus-copy .nv-button {
+  margin-top: 22px;
+}
+#nomo-site .nv-focus-desktop {
+  position: relative;
+  min-height: 270px;
+  background-color: #2a3442;
+  background-image: radial-gradient(#8997ab14 0.7px, transparent 0.7px);
+  background-size: 14px 14px;
+  border: 1px solid var(--n-border);
+  border-radius: 10px;
+  padding: 35px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nomo-site .nv-small-app {
+  width: 100%;
+  max-width: 350px;
+  background: #252b34;
+  border: 1px solid #465160;
+  border-radius: 7px;
+  box-shadow: 0 16px 25px #080b1240;
+  transition: transform 240ms ease;
+}
+#nomo-site .nv-small-app.nv-is-mini {
+  max-width: 260px;
+  transform: translateY(-6px);
+}
+#nomo-site .nv-small-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 11px;
+  font-size: 12px;
+  color: #b6c0ce;
+  background: #1e2229;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #3a4350;
+}
+#nomo-site .nv-small-top .nv-icon {
+  width: 12px;
+  height: 12px;
+}
+#nomo-site .nv-small-content {
+  display: grid;
+  grid-template-columns: 65px 1fr;
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-content {
+  grid-template-columns: 1fr;
+}
+#nomo-site .nv-small-sidebar {
+  padding: 13px 8px;
+  background: #1d222a;
+  color: #a8b1bf;
+  font-size: 12px;
+  border-right: 1px solid #3a4350;
+}
+#nomo-site .nv-small-sidebar div {
+  margin-bottom: 8px;
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-sidebar {
+  display: none;
+}
+#nomo-site .nv-small-document {
+  padding: 18px 15px;
+  min-height: 154px;
+}
+#nomo-site .nv-small-document h4 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+#nomo-site .nv-small-document p {
+  font-size: 13px;
+  color: #c2cad5;
+  line-height: 1.9;
+}
+#nomo-site .nv-desktop-caption {
+  position: absolute;
+  bottom: 11px;
+  left: 15px;
+  color: var(--n-muted);
+  font-size: 11px;
+}
+#nomo-site .nv-local {
+  background: #2a3543;
+}
+#nomo-site .nv-local-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 35px;
+  align-items: center;
+}
+#nomo-site .nv-local-facts {
+  display: grid;
+  gap: 16px;
+}
+#nomo-site .nv-local-fact {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--n-body);
+  font-size: 13px;
+}
+#nomo-site .nv-local-fact .nv-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--n-muted);
+}
+#nomo-site .nv-updates-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+#nomo-site .nv-update-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+  margin-top: 30px;
+}
+#nomo-site .nv-update {
+  border-top: 1px solid var(--n-border);
+  padding-top: 16px;
+}
+#nomo-site .nv-update h3 {
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+#nomo-site .nv-update p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--n-muted);
+  margin-top: 7px;
+}
+#nomo-site .nv-version-date {
+  color: var(--n-muted);
+  font-size: 11px;
+  margin-top: 12px;
+}
+#nomo-site .nv-download {
+  background: linear-gradient(180deg, #2b3747, #273241);
+}
+#nomo-site .nv-download-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+#nomo-site .nv-current-version {
+  font-size: 12px;
+  color: var(--n-muted);
+}
+#nomo-site .nv-download-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 30px;
+}
+#nomo-site .nv-download-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px;
+  background: #313e4e;
+  border: 1px solid var(--n-border);
+  border-radius: 9px;
+}
+#nomo-site .nv-platform-title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+#nomo-site .nv-platform-title .nv-icon {
+  width: 21px;
+  height: 21px;
+  color: #c3cddb;
+}
+#nomo-site .nv-platform-title h3 {
+  font-size: 19px;
+}
+#nomo-site .nv-platform-info {
+  margin: 9px 0 23px;
+  color: var(--n-muted);
+  font-size: 12px;
+}
+#nomo-site .nv-package-info {
+  margin-bottom: 13px;
+  color: #b6c0ce;
+  font-size: 11px;
+}
+#nomo-site .nv-download-card .nv-button {
+  margin-top: auto;
+  width: 100%;
+}
+#nomo-site .nv-package-secondary {
+  display: block;
+  margin-top: 12px;
+  color: var(--n-muted);
+  font-size: 11px;
+  text-align: center;
+}
+#nomo-site .nv-download-help {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  color: var(--n-muted);
+  font-size: 12px;
+}
+#nomo-site .nv-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+  padding-block: 29px;
+  border-top: 1px solid #ffffff0b;
+}
+#nomo-site .nv-footer-caption {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--n-muted);
+}
+#nomo-site .nv-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--n-muted);
+  font-size: 11px;
+}
+@media (max-width: 800px) {
+  #nomo-site .nv-hero-intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+@media (max-width: 700px) {
+  #nomo-site .nv-feature-grid,
+  #nomo-site .nv-focus-layout,
+  #nomo-site .nv-local-layout {
+    grid-template-columns: 1fr;
+  }
+  #nomo-site .nv-focus-layout {
+    gap: 25px;
+  }
+  #nomo-site .nv-nav-links {
+    gap: 17px;
+  }
+  #nomo-site .nv-hero {
+    padding-top: 48px;
+  }
+  #nomo-site .nv-section {
+    padding-block: 50px;
+  }
+}
+@media (max-width: 560px) {
+  #nomo-site .nv-nav-links {
+    display: none;
+  }
+  #nomo-site .nv-nav {
+    gap: 12px;
+  }
+  #nomo-site .nv-app-layout {
+    grid-template-columns: 1fr;
+  }
+  #nomo-site .nv-file-sidebar {
+    display: none;
+  }
+  #nomo-site .n-paper {
+    border-radius: 0 0 10px 10px;
+  }
+  #nomo-site .nv-lede {
+    font-size: 14px;
+  }
+  #nomo-site .nv-hero-actions {
+    gap: 18px;
+  }
+  #nomo-site .nv-hero-demo {
+    margin-top: 32px;
+  }
+  #nomo-site .nv-feature {
+    padding: 21px;
+  }
+  #nomo-site .nv-download-grid,
+  #nomo-site .nv-update-items {
+    grid-template-columns: 1fr;
+  }
+  #nomo-site .nv-update-items {
+    gap: 20px;
+  }
+  #nomo-site .nv-footer {
+    align-items: start;
+    flex-direction: column;
+  }
+  #nomo-site .nv-focus-desktop {
+    padding-inline: 18px;
+  }
+}
+@media (pointer: coarse) {
+  #nomo-site .nv-mode-button,
+  #nomo-site .nv-outline-button,
+  #nomo-site .nv-button {
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nomo-site .n-window,
+  #nomo-site .n-window::before,
+  #nomo-site .n-window::after,
+  #nomo-site .nv-small-app,
+  #nomo-site .nv-button,
+  #nomo-site .nv-feature::before {
+    transition: none;
+  }
+}
+
+#nomo-site .nv-shell {
+  max-width: 1248px;
+  margin-inline: auto;
+}
+#nomo-site h1,
+#nomo-site h2 {
+  max-width: none;
+}
+#nomo-site button {
+  cursor: pointer;
+}
+#nomo-site button:disabled {
+  cursor: default;
+}
+#nomo-site .nv-language {
+  font-size: 12px;
+  color: var(--n-muted);
+  padding-block: 9px;
+}
+#nomo-site .nv-language:hover {
+  color: var(--n-text);
+}
+#nomo-site .nv-watch {
+  min-height: 43px;
+}
+#nomo-site .n-writing-svg {
+  display: none;
+}
+#nomo-site[data-writer-ready] .n-writing-svg {
+  display: block;
+}
+#nomo-site[data-writer-ready] .n-writing-fallback {
+  display: none;
+}
+#nomo-site .n-writing-fallback {
+  padding: 30px 40px 34px;
+}
+#nomo-site .n-writing-fallback h3 {
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+#nomo-site .n-writing-fallback p,
+#nomo-site .n-writing-fallback ul {
+  font-size: 16px;
+  color: var(--n-body);
+}
+#nomo-site .n-writing-fallback ul {
+  padding-left: 20px;
+  margin: 18px 0 22px;
+}
+#nomo-site .n-writing-fallback .nv-mini-table {
+  font-size: 14px;
+}
+#nomo-site .nv-download-note {
+  margin-top: 20px;
+  max-width: 750px;
+  color: var(--n-muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+#nomo-site .nv-download-note a,
+#nomo-site .nv-package-secondary:hover,
+#nomo-site .nv-download-help a:hover {
+  color: var(--n-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#nomo-site .nv-update code {
+  font-size: inherit;
+}
+#nomo-site .nv-update:only-child {
+  grid-column: 1 / -1;
+  max-width: 720px;
+}
+#nomo-site .nv-update a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 560px) {
+  #nomo-site .n-writing-fallback {
+    padding-inline: 24px;
+  }
+}
+@media (pointer: coarse) {
+  #nomo-site .nv-language,
+  #nomo-site .nv-package-secondary,
+  #nomo-site .nv-download-help a,
+  #nomo-site .nv-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  #nomo-site .nv-package-secondary {
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nomo-site[data-writer-ready] .n-writing-svg,
+  #nomo-site .nv-demo-controls {
+    display: none;
+  }
+  #nomo-site[data-writer-ready] .n-writing-fallback {
+    display: block;
+  }
+  #nomo-site .n-window {
+    transform: none;
+  }
+  #nomo-site .n-window::before,
+  #nomo-site .n-window::after,
+  #nomo-site .nv-feature::before {
+    opacity: 0;
+  }
+}
+
+#nomo-site:lang(zh-CN) .nv-hero h1 {
+  letter-spacing: -0.02em;
+  font-weight: 550;
+}
+#nomo-site .nv-wordmark img {
+  border-radius: 8px;
+}

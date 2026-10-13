@@ -1,0 +1,744 @@
+/* The preview follows Nomo v0.5.6's default palette and desktop chrome. */
+#nomo-site {
+  --app-rail: #f3f4f6;
+  --app-paper: #ffffff;
+  --app-chrome: #f3f4f6;
+  --app-text: #202428;
+  --app-heading: #171a1f;
+  --app-muted: #68707a;
+  --app-border: #dfe3e8;
+  --app-active: #e7f0ee;
+  --app-accent: #2f7d6f;
+  --app-accent-strong: #174e45;
+  --app-table-head: #f0f2f4;
+  --app-code: #f5f6f8;
+  --app-menu: #ffffff;
+}
+#nomo-site[data-product-theme="dark"] {
+  --app-rail: #181d23;
+  --app-paper: #1d2229;
+  --app-chrome: #20262e;
+  --app-text: #eef2f5;
+  --app-heading: #ffffff;
+  --app-muted: #9aa4af;
+  --app-border: #333b46;
+  --app-active: #203530;
+  --app-accent: #67b7a5;
+  --app-accent-strong: #a2dece;
+  --app-table-head: #252d36;
+  --app-code: #171c22;
+  --app-menu: #252b33;
+}
+#nomo-site .n-window,
+#nomo-site .nv-mode-demo,
+#nomo-site .nv-outline-demo,
+#nomo-site .nv-small-app {
+  font-family: var(--font-product);
+  color: var(--app-text);
+  background: var(--app-paper);
+}
+#nomo-site .n-window {
+  border: 1px solid #667486;
+  overflow: hidden;
+  background: var(--app-rail);
+  box-shadow:
+    0 18px 50px #10203436,
+    0 1px 3px #10203420;
+  border-radius: 10px;
+}
+#nomo-site .n-app-icon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  display: block;
+}
+#nomo-site .n-titlebar {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding-left: 11px;
+  background: var(--app-chrome);
+  color: var(--app-text);
+  font-size: 12px;
+  border-bottom: 1px solid var(--app-border);
+}
+#nomo-site .n-sidebar-toggle {
+  color: var(--app-muted);
+}
+#nomo-site .n-app-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+#nomo-site .n-titlebar-menu {
+  display: flex;
+  gap: 18px;
+  padding-left: 6px;
+}
+#nomo-site .n-titlebar-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
+#nomo-site .n-theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 4px;
+  color: var(--app-muted);
+}
+#nomo-site .n-theme-toggle:hover {
+  background: var(--app-active);
+  color: var(--app-accent-strong);
+}
+#nomo-site .n-theme-toggle:focus-visible {
+  outline-color: var(--app-accent);
+  outline-offset: -1px;
+}
+#nomo-site .n-sun {
+  display: none;
+}
+#nomo-site[data-product-theme="dark"] .n-moon {
+  display: none;
+}
+#nomo-site[data-product-theme="dark"] .n-sun {
+  display: block;
+}
+#nomo-site .n-caption-controls {
+  display: flex;
+  align-self: stretch;
+}
+#nomo-site .n-caption-controls > span {
+  display: grid;
+  place-items: center;
+  width: 39px;
+}
+#nomo-site .n-caption-controls .n-app-icon {
+  width: 13px;
+  height: 13px;
+  stroke-width: 1.3;
+}
+#nomo-site .nv-app-layout {
+  grid-template-columns: 200px minmax(0, 1fr);
+  background: var(--app-rail);
+}
+#nomo-site .nv-file-sidebar {
+  padding: 12px 8px;
+  color: var(--app-muted);
+  background: var(--app-rail);
+  border: 0;
+  font-size: 13px;
+  border-radius: 0;
+}
+#nomo-site .nv-folder-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--app-text);
+  padding: 0 7px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#nomo-site .nv-folder-title .n-app-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--app-accent);
+}
+#nomo-site .nv-file-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  margin: 3px 0;
+  font-size: 13px;
+}
+#nomo-site .nv-file-row .n-app-icon {
+  width: 13px;
+  height: 13px;
+}
+#nomo-site .nv-file-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#nomo-site .nv-file-row.nv-file-active {
+  color: var(--app-accent-strong);
+  background: transparent;
+  box-shadow: inset 2px 0 var(--app-accent);
+  border-radius: 0;
+}
+#nomo-site .n-document-tabs {
+  min-height: 31px;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  padding-left: 16px;
+  background: var(--app-rail);
+}
+#nomo-site .n-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  min-height: 31px;
+  border: 1px solid var(--app-border);
+  border-bottom: 0;
+  background: var(--app-paper);
+  border-radius: 9px 9px 0 0;
+  color: var(--app-heading);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 -2px 7px #1c29300a;
+}
+#nomo-site .n-tab .n-app-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--app-accent);
+}
+#nomo-site .n-tab-add {
+  display: grid;
+  place-items: center;
+  height: 31px;
+  width: 28px;
+  color: var(--app-muted);
+}
+#nomo-site .n-toolbar {
+  min-height: 40px;
+  padding: 5px 14px;
+  gap: 8px;
+  color: var(--app-muted);
+  background: var(--app-paper);
+  border-bottom: 1px solid var(--app-border);
+  border-top-left-radius: 9px;
+  font-size: 12px;
+}
+#nomo-site .n-toolbar-core,
+#nomo-site .n-toolbar-extra {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+#nomo-site .n-app-tool {
+  display: inline-grid;
+  place-items: center;
+  height: 28px;
+  width: 27px;
+  flex: none;
+  color: var(--app-muted);
+}
+#nomo-site .n-toolbar-extra {
+  margin-left: 2px;
+}
+#nomo-site .n-content-width {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: var(--app-accent-strong);
+  font-size: 10px;
+}
+#nomo-site .n-content-width i {
+  display: block;
+  width: 44px;
+  height: 6px;
+  border-radius: 5px;
+  background: var(--app-accent);
+  position: relative;
+}
+#nomo-site .n-content-width i::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 14px;
+  top: -3px;
+  border-radius: 50%;
+  background: var(--app-accent);
+}
+#nomo-site .n-mode-switch {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--app-border);
+  border-radius: 4px;
+}
+#nomo-site .n-mode-switch > span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 23px;
+  border-radius: 2px;
+}
+#nomo-site .n-mode-switch .n-mode-active {
+  background: var(--app-active);
+  color: var(--app-accent-strong);
+}
+#nomo-site .n-outline-toggle {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  margin-left: 1px;
+  border-radius: 3px;
+  background: var(--app-active);
+  color: var(--app-accent-strong);
+}
+#nomo-site .n-document-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 176px;
+  background: var(--app-paper);
+}
+#nomo-site .n-paper {
+  min-width: 0;
+  background: var(--app-paper);
+  border-radius: 0;
+}
+#nomo-site .n-writing-svg {
+  font-family: var(--font-product);
+  color: var(--app-muted);
+}
+#nomo-site .n-writing-svg text {
+  fill: var(--app-text);
+  font-size: 16px;
+}
+#nomo-site .n-writing-svg .n-doc-title {
+  fill: var(--app-heading);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+#nomo-site .n-writing-svg .n-raw-title {
+  fill: var(--app-text);
+  font-size: 16px;
+}
+#nomo-site .n-writing-svg .n-bullet {
+  fill: var(--app-text);
+}
+#nomo-site .n-writing-svg .n-caret {
+  fill: var(--app-text);
+}
+#nomo-site .n-writing-svg .n-table-back {
+  fill: var(--app-paper);
+}
+#nomo-site .n-writing-svg .n-table-head {
+  fill: var(--app-table-head);
+}
+#nomo-site .n-writing-svg .n-table-grid {
+  stroke: var(--app-border);
+}
+#nomo-site .n-writing-svg .n-cell {
+  fill: var(--app-text);
+  font-size: 14px;
+}
+#nomo-site .n-writing-svg .n-cell-header {
+  fill: var(--app-heading);
+  font-size: 13px;
+  font-weight: 800;
+}
+#nomo-site .n-writing-svg .n-menu-back {
+  fill: var(--app-menu);
+  stroke: var(--app-border);
+  filter: drop-shadow(0 4px 9px #18242b20);
+}
+#nomo-site .n-writing-svg .n-menu-select {
+  fill: var(--app-active);
+}
+#nomo-site .n-writing-svg .n-menu-text {
+  font-size: 13px;
+  fill: var(--app-text);
+}
+#nomo-site .n-writing-svg .n-menu-selected-text {
+  fill: var(--app-accent-strong);
+  font-weight: 600;
+}
+#nomo-site .n-writing-svg .n-menu-variant {
+  font-size: 11px;
+  fill: var(--app-muted);
+}
+#nomo-site .n-writing-svg .n-menu-hint {
+  font-size: 11px;
+  fill: var(--app-muted);
+}
+#nomo-site .n-writing-svg .n-menu-rule {
+  stroke: var(--app-border);
+  stroke-width: 1;
+}
+#nomo-site .n-writing-svg .n-menu-icon {
+  color: var(--app-muted);
+}
+#nomo-site .n-document-outline {
+  align-self: start;
+  margin: 38px 14px 0 0;
+  padding: 14px;
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px #16202c09;
+  font-size: 12px;
+}
+#nomo-site .n-document-outline strong {
+  display: block;
+  font-size: 12px;
+  color: var(--app-heading);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+#nomo-site .n-outline-current {
+  display: block;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: var(--app-accent-strong);
+  background: var(--app-active);
+  font-size: 12px;
+  min-height: 27px;
+  overflow-wrap: anywhere;
+}
+#nomo-site .n-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 7px 14px;
+  background: var(--app-rail);
+  color: var(--app-muted);
+  font-size: 12px;
+  min-height: 29px;
+}
+#nomo-site .n-zoom {
+  padding: 1px 9px;
+  background: var(--app-paper);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px #16202c12;
+  color: var(--app-text);
+  font-size: 11px;
+}
+#nomo-site .n-writing-fallback {
+  padding: 30px min(12%, 88px) 32px;
+}
+#nomo-site .n-writing-fallback h3 {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--app-heading);
+  margin-bottom: 24px;
+}
+#nomo-site .n-writing-fallback p,
+#nomo-site .n-writing-fallback ul {
+  color: var(--app-text);
+  font-family: var(--font-product);
+  font-size: 16px;
+}
+#nomo-site .n-writing-fallback ul {
+  margin: 18px 0 26px;
+  padding-left: 20px;
+}
+#nomo-site .n-writing-fallback li {
+  margin-bottom: 5px;
+}
+#nomo-site .n-writing-fallback .nv-mini-table {
+  width: min(300px, 100%);
+  table-layout: fixed;
+  background: var(--app-paper);
+  color: var(--app-text);
+  font-size: 14px;
+}
+#nomo-site .n-writing-fallback th {
+  background: var(--app-table-head);
+  color: var(--app-heading);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+#nomo-site .n-writing-fallback th:nth-child(1) {
+  width: 45%;
+}
+#nomo-site .n-writing-fallback th:nth-child(2) {
+  width: 22%;
+}
+#nomo-site .n-writing-fallback th:nth-child(3) {
+  width: 33%;
+}
+#nomo-site .n-writing-fallback th,
+#nomo-site .n-writing-fallback td {
+  padding: 9px 10px;
+  border-color: var(--app-border);
+}
+#nomo-site .nv-mode-demo,
+#nomo-site .nv-outline-demo {
+  border-color: var(--app-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 9px #12253710;
+}
+#nomo-site .nv-mode-demo {
+  overflow: hidden;
+}
+#nomo-site .nv-mode-top {
+  background: var(--app-rail);
+  color: var(--app-heading);
+  border-color: var(--app-border);
+}
+#nomo-site .nv-mode-top > span,
+#nomo-site .nv-outline-caption {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--app-muted);
+}
+#nomo-site .nv-mode-top .n-app-icon,
+#nomo-site .nv-outline-caption .n-app-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--app-accent);
+}
+#nomo-site .nv-mode-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  color: var(--app-muted);
+}
+#nomo-site .nv-mode-button[aria-pressed="true"] {
+  background: var(--app-active);
+  color: var(--app-accent-strong);
+}
+#nomo-site .nv-mode-body h4 {
+  font-weight: 700;
+  color: var(--app-heading);
+  font-size: 20px;
+}
+#nomo-site .nv-mode-body ul {
+  color: var(--app-text);
+  font-size: 14px;
+  line-height: 1.8;
+}
+#nomo-site .nv-mode-body pre {
+  color: var(--app-text);
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+}
+#nomo-site .nv-mini-table {
+  color: var(--app-text);
+}
+#nomo-site .nv-mini-table th,
+#nomo-site .nv-mini-table td {
+  border-color: var(--app-border);
+  padding: 7px 10px;
+}
+#nomo-site .nv-mini-table th {
+  color: var(--app-heading);
+  background: var(--app-table-head);
+  font-weight: 600;
+}
+#nomo-site .nv-mode-body .nv-mini-table {
+  width: 230px;
+  max-width: 100%;
+  font-size: 12px;
+}
+#nomo-site .nv-outline-button {
+  color: var(--app-muted);
+  font-size: 13px;
+}
+#nomo-site .nv-outline-button.nv-selected {
+  background: var(--app-active);
+  color: var(--app-accent-strong);
+}
+#nomo-site .nv-outline-result {
+  color: var(--app-text);
+  border-color: var(--app-border);
+}
+#nomo-site .nv-focus-desktop {
+  background-color: #344252;
+  background-image: radial-gradient(#a6b6c626 0.7px, transparent 0.7px);
+  min-height: 310px;
+}
+#nomo-site .nv-small-app {
+  position: relative;
+  border-color: var(--app-border);
+  border-radius: 8px;
+  box-shadow: 0 14px 28px #12233528;
+}
+#nomo-site .nv-small-top {
+  background: var(--app-rail);
+  border-color: var(--app-border);
+  color: var(--app-muted);
+  font-size: 11px;
+}
+#nomo-site .nv-mini-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+#nomo-site .nv-mini-controls .n-app-icon {
+  height: 13px;
+  width: 13px;
+}
+#nomo-site .nv-small-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  min-height: 27px;
+  padding: 5px 10px 3px 80px;
+  color: var(--app-text);
+  background: var(--app-rail);
+}
+#nomo-site .nv-small-tabs .n-app-icon {
+  height: 12px;
+  width: 12px;
+  color: var(--app-accent);
+}
+#nomo-site .nv-small-content {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+#nomo-site .nv-small-sidebar {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  color: var(--app-muted);
+  background: var(--app-rail);
+  border: 0;
+  padding: 12px 10px;
+  font-size: 11px;
+}
+#nomo-site .nv-small-toolbar {
+  display: flex;
+  padding: 4px 10px;
+  grid-column: 2;
+  grid-row: 1;
+  border-bottom: 1px solid var(--app-border);
+}
+#nomo-site .nv-small-toolbar .n-app-tool {
+  width: 24px;
+  height: 20px;
+}
+#nomo-site .nv-small-toolbar .n-app-icon {
+  width: 13px;
+  height: 13px;
+}
+#nomo-site .nv-small-document {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 20px 18px;
+  min-height: 172px;
+}
+#nomo-site .nv-small-document h4 {
+  font-weight: 700;
+  color: var(--app-heading);
+  font-size: 18px;
+  line-height: 1.6;
+}
+#nomo-site .nv-small-document p {
+  font-size: 14px;
+  color: var(--app-text);
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-tabs,
+#nomo-site .nv-small-app.nv-is-mini .nv-small-toolbar {
+  display: none;
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-content {
+  display: block;
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-top {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  background: var(--app-paper);
+  opacity: 0;
+  transition: opacity 180ms;
+  z-index: 1;
+}
+#nomo-site .nv-small-app.nv-is-mini:hover .nv-small-top {
+  opacity: 1;
+}
+#nomo-site .nv-small-app.nv-is-mini .nv-small-document {
+  padding-top: 30px;
+}
+@media (max-width: 1100px) {
+  #nomo-site .n-toolbar-extra .n-tool-0,
+  #nomo-site .n-toolbar-extra .n-tool-1 {
+    display: none;
+  }
+  #nomo-site .n-content-width {
+    display: none;
+  }
+  #nomo-site .n-mode-switch {
+    margin-left: auto;
+  }
+}
+@media (max-width: 980px) {
+  #nomo-site .n-document-area {
+    grid-template-columns: 1fr;
+  }
+  #nomo-site .n-document-outline {
+    display: none;
+  }
+  #nomo-site .nv-app-layout {
+    grid-template-columns: 175px minmax(0, 1fr);
+  }
+  #nomo-site .n-toolbar-extra {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  #nomo-site .n-titlebar-menu {
+    display: none;
+  }
+  #nomo-site .n-caption-controls > span {
+    width: 28px;
+  }
+  #nomo-site .n-app-tool {
+    width: 23px;
+  }
+  #nomo-site .n-toolbar-core .n-tool-5,
+  #nomo-site .n-toolbar-core .n-tool-6 {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  #nomo-site .nv-app-layout {
+    grid-template-columns: 1fr;
+  }
+  #nomo-site .n-titlebar {
+    gap: 9px;
+  }
+  #nomo-site .n-caption-controls > span {
+    width: 24px;
+  }
+  #nomo-site .n-toolbar {
+    gap: 5px;
+    padding-inline: 9px;
+  }
+  #nomo-site .n-toolbar-core {
+    gap: 0;
+  }
+  #nomo-site .n-toolbar-core .n-tool-3,
+  #nomo-site .n-toolbar-core .n-tool-4 {
+    display: none;
+  }
+  #nomo-site .n-outline-toggle {
+    display: none;
+  }
+  #nomo-site .n-document-tabs {
+    padding-left: 12px;
+  }
+  #nomo-site .n-writing-svg .n-doc-title,
+  #nomo-site .n-writing-fallback h3 {
+    font-size: 26px;
+  }
+  #nomo-site .n-writing-fallback {
+    padding-inline: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nomo-site .nv-small-app.nv-is-mini .nv-small-top {
+    transition: none;
+  }
+}
+
+#nomo-site .n-writing-fallback .nv-mini-table th { font-weight:800; }
+#nomo-site .nv-mode-button .n-app-icon { width:15px; height:15px; }

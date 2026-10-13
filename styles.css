@@ -1,21 +1,22 @@
 :root {
-  color-scheme: light dark;
-  --page: #f4f6f8;
-  --surface: #ffffff;
-  --surface-soft: #eaedf1;
-  --surface-blue: #e9efff;
-  --ink: #171b22;
-  --ink-soft: #59616d;
-  --line: #d9dee5;
-  --accent: #3b5fce;
-  --accent-strong: #2d4ca9;
-  --accent-ink: #ffffff;
-  --header: rgb(244 246 248 / 88%);
-  --shadow: 0 24px 70px rgb(45 56 72 / 15%);
-  --radius: 18px;
-  --max-width: 1180px;
-  font-family:
-    "Segoe UI Variable Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color-scheme: dark;
+  --page: #26303d;
+  --surface: #2d3947;
+  --surface-soft: #344252;
+  --surface-blue: #304055;
+  --ink: #eef1f5;
+  --ink-soft: #afbdcc;
+  --line: #465565;
+  --accent: #cad6e5;
+  --accent-strong: #f6f8fb;
+  --accent-ink: #1a1d23;
+  --header: rgb(38 48 61 / 94%);
+  --shadow: 0 24px 70px rgb(5 7 11 / 34%);
+  --radius: 10px;
+  --max-width: 1120px;
+  --font-site: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-product: "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-site);
   font-synthesis: none;
 }
 
@@ -185,7 +186,7 @@ a {
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
-  box-shadow: 0 10px 30px rgb(65 105 225 / 20%);
+  box-shadow: none;
   transition:
     transform 180ms ease,
     background-color 180ms ease,
@@ -194,7 +195,7 @@ a {
 
 .button:hover {
   background: var(--accent-strong);
-  box-shadow: 0 14px 36px rgb(65 105 225 / 26%);
+  box-shadow: none;
   transform: translateY(-1px);
 }
 
@@ -1023,29 +1024,116 @@ h3 {
   font-weight: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #11151b;
-    --surface: #191e26;
-    --surface-soft: #202630;
-    --surface-blue: #18233e;
-    --ink: #edf0f4;
-    --ink-soft: #aeb6c2;
-    --line: #303844;
-    --accent: #7694ff;
-    --accent-strong: #8aa3ff;
-    --accent-ink: #101526;
-    --header: rgb(17 21 27 / 88%);
-    --shadow: 0 24px 70px rgb(0 0 0 / 34%);
+.icon-link img {
+  filter: invert(1) brightness(1.15);
+}
+
+.brand img,
+.footer-brand img {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
+}
+
+.inner-page .brand,
+.inner-page .footer-brand {
+  font-weight: 500;
+}
+
+.inner-page .page-hero {
+  gap: 32px;
+  padding-block: 72px 56px;
+}
+
+.inner-page .page-hero h1 {
+  max-width: none;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.inner-page .page-lede {
+  font-size: 16px;
+}
+
+.inner-page .download-shell,
+.inner-page .release-list {
+  padding-block: 56px 80px;
+}
+
+.inner-page .section-heading h2,
+.inner-page .platform-heading h2 {
+  font-size: clamp(27px, 4vw, 34px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.inner-page .platform-download {
+  padding-block: 42px;
+}
+
+.inner-page .package-description h3,
+.inner-page .source-description h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.homebrew-install {
+  margin: 28px 0 0 92px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.homebrew-install h3 {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.homebrew-install pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--ink-soft);
+  font: 12px/1.8 "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+}
+
+.homebrew-install button {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .package-row,
+  .source-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
   }
 
-  .icon-link img {
-    filter: invert(1) brightness(1.15);
+  .package-meta {
+    grid-column: 1 / -1;
   }
 
-  .brand img,
-  .footer-brand img {
-    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
+  .package-action,
+  .package-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .package-actions .package-action {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .homebrew-install {
+    margin-left: 0;
   }
 }
 

@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="theme-color" content="#26303d" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Download the latest version of Nomo for Windows 10/11 or Apple Silicon Mac." />
-    <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="zh_CN" />
@@ -18,6 +17,7 @@
     <link rel="alternate" hreflang="en" href="https://nomo-md.pages.dev/en/download/" />
     <link rel="alternate" hreflang="x-default" href="https://nomo-md.pages.dev/download/" />
     <link rel="icon" href="/assets/nomo-logo.png" />
+    <link rel="stylesheet" href="/fonts.css" />
     <link rel="stylesheet" href="/styles.css" />
     <title>Download Nomo {{LATEST_TAG}}</title>
   </head>
@@ -107,6 +107,9 @@
             <p class="platform-warning">
               <strong>Installation note</strong> The current app has not yet been notarized by Apple, so Gatekeeper may block it the first time. You can allow it from System Settings → Privacy &amp; Security.
             </p>
+
+            <div class="homebrew-install" id="homebrew"><h3>Install with Homebrew</h3><pre><code>brew tap nomo-md/nomo https://github.com/nomo-md/nomo
+brew install --cask nomo</code></pre><button type="button" data-copy-text="brew tap nomo-md/nomo https://github.com/nomo-md/nomo&#10;brew install --cask nomo">Copy commands</button></div>
           </section>
         </div>
       </section>

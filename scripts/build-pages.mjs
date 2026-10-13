@@ -259,6 +259,31 @@ function renderReleaseHistory(notes, releases) {
     .join('\n');
 }
 
+function renderHomepageHighlights(release, notes, highlights, locale = 'zh-CN') {
+  const english = locale === 'en-US';
+  const curated = highlights[release.tag_name]?.[locale];
+  const note = notes.find((item) => item.name === `${release.tag_name}.md`);
+  const publishedItems = prepareReleaseNote(note?.content || release.body || '')
+    .split(/\r?\n/)
+    .filter((line) => /^[-*]\s+/.test(line))
+    .slice(0, 3)
+    .map((line) => ({
+      title: '本次更新',
+      description: line.replace(/^[-*]\s+/, ''),
+    }));
+
+  // 摘要只用于对应版本；发布新版本后回退到当次说明，避免沿用旧功能。
+  const fallback = english
+    ? [{ title: 'New release', description: `${release.tag_name} is available. Read the full release notes for the changes in this version.` }]
+    : [{ title: '新版本已发布', description: `${release.tag_name} 已发布，完整变更请查看版本说明。` }];
+  const items = curated || (!english && publishedItems.length ? publishedItems : fallback);
+  return items.map((item) => `
+    <article class="nv-update">
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${markdown.renderInline(item.description)}</p>
+    </article>`).join('\n');
+}
+
 async function renderTemplate(sourcePath, destinationPath, replacements) {
   let html = await readFile(sourcePath, 'utf8');
   for (const [token, value] of Object.entries(replacements)) {
@@ -270,16 +295,18 @@ async function renderTemplate(sourcePath, destinationPath, replacements) {
 }
 
 async function main() {
-  const [latestRelease, releases, notes] = await Promise.all([
+  const [latestRelease, releases, notes, highlightsSource] = await Promise.all([
     fetchJson(`${githubApi}/releases/latest?build=${Date.now()}`),
     fetchJson(`${githubApi}/releases?per_page=100&build=${Date.now()}`),
     loadReleaseNotes(),
+    readFile(path.join(projectRoot, 'content', 'homepage-highlights.json'), 'utf8'),
   ]);
 
   if (latestRelease.draft || latestRelease.prerelease) {
     throw new Error(`GitHub latest 返回的 ${latestRelease.tag_name} 不是稳定版本`);
   }
 
+  const highlights = JSON.parse(highlightsSource);
   const assets = resolveAssets(latestRelease);
   await rm(outputRoot, { recursive: true, force: true });
   await mkdir(outputRoot, { recursive: true });
@@ -287,6 +314,9 @@ async function main() {
   await Promise.all([
     cp(path.join(projectRoot, 'assets'), path.join(outputRoot, 'assets'), { recursive: true }),
     cp(path.join(projectRoot, 'styles.css'), path.join(outputRoot, 'styles.css')),
+    cp(path.join(projectRoot, 'home.css'), path.join(outputRoot, 'home.css')),
+    cp(path.join(projectRoot, 'fonts.css'), path.join(outputRoot, 'fonts.css')),
+    cp(path.join(projectRoot, 'product-demo.css'), path.join(outputRoot, 'product-demo.css')),
     cp(path.join(projectRoot, 'script.js'), path.join(outputRoot, 'script.js')),
     cp(path.join(projectRoot, 'robots.txt'), path.join(outputRoot, 'robots.txt')),
     cp(path.join(projectRoot, 'sitemap.xml'), path.join(outputRoot, 'sitemap.xml')),
@@ -295,23 +325,27 @@ async function main() {
     ),
   ]);
 
-  const homepage = await readFile(path.join(projectRoot, 'index.html'), 'utf8');
-  await writeFile(
-    path.join(outputRoot, 'index.html'),
-    homepage.replace(/"softwareVersion":\s*"[^"]+"/, `"softwareVersion": "${latestRelease.tag_name.slice(1)}"`),
-    'utf8',
-  );
-
-  const englishHomepage = await readFile(path.join(projectRoot, 'en', 'index.html'), 'utf8');
-  await mkdir(path.join(outputRoot, 'en'), { recursive: true });
-  await writeFile(
-    path.join(outputRoot, 'en', 'index.html'),
-    englishHomepage.replace(
-      /"softwareVersion":\s*"[^"]+"/,
-      `"softwareVersion": "${latestRelease.tag_name.slice(1)}"`,
-    ),
-    'utf8',
-  );
+  const homepageReplacements = {
+    LATEST_TAG: escapeHtml(latestRelease.tag_name),
+    LATEST_VERSION: escapeHtml(latestRelease.tag_name.replace(/^v/, '')),
+    LATEST_RELEASE_URL: escapeHtml(latestRelease.html_url),
+  };
+  for (const [prefix, kind] of [
+    ['WINDOWS_INSTALLER', 'windows-installer'],
+    ['WINDOWS_PORTABLE', 'windows-portable'],
+    ['MACOS_DMG', 'macos-dmg'],
+  ]) {
+    const asset = assets.find((item) => item.key === kind);
+    homepageReplacements[`${prefix}_SIZE`] = escapeHtml(formatBytes(asset.size));
+    homepageReplacements[`${prefix}_URL`] = `/downloads/${encodeURIComponent(latestRelease.tag_name)}/${encodeURIComponent(asset.name)}`;
+  }
+  for (const [relativePath, locale] of [['index.html', 'zh-CN'], ['en/index.html', 'en-US']]) {
+    await renderTemplate(path.join(projectRoot, relativePath), path.join(outputRoot, relativePath), {
+      ...homepageReplacements,
+      RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at, locale)),
+      LATEST_HIGHLIGHTS: renderHomepageHighlights(latestRelease, notes, highlights, locale),
+    });
+  }
 
   await renderTemplate(path.join(projectRoot, 'download', 'index.html'), path.join(outputRoot, 'download', 'index.html'), {
     LATEST_TAG: escapeHtml(latestRelease.tag_name),

@@ -1,0 +1,32 @@
+{
+  "v0.5.6": {
+    "zh-CN": [
+      {
+        "title": "快捷插入",
+        "description": "输入 /，选择标题、列表、表格、代码、公式和图表。"
+      },
+      {
+        "title": "文件树键入定位",
+        "description": "直接输入文件名，匹配与高亮帮助你找到目标。"
+      },
+      {
+        "title": "小窗与保存体验",
+        "description": "优化小窗切换，完善复杂表格保存与编辑状态。"
+      }
+    ],
+    "en-US": [
+      {
+        "title": "Quick insert",
+        "description": "Type / to insert headings, lists, tables, code, equations and diagrams."
+      },
+      {
+        "title": "Find files by typing",
+        "description": "Type a file name in the tree. Matching names are highlighted as you go."
+      },
+      {
+        "title": "Mini windows and saving",
+        "description": "Smoother window transitions, with fixes for saving complex tables and editing states."
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+Inter 4.1: https://rsms.me/inter/
+Noto Sans SC: https://fonts.google.com/noto/specimen/Noto+Sans+SC
+Noto Sans SC assets are official Google Fonts text subsets for the currently published site content. Characters outside these subsets use the CSS system-font fallback.
+Both font families use the included SIL Open Font License.
