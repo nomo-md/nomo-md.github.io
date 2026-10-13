@@ -321,12 +321,20 @@ async function main() {
     cp(path.join(projectRoot, 'script.js'), path.join(outputRoot, 'script.js')),
     cp(path.join(projectRoot, 'playground.js'), path.join(outputRoot, 'playground.js')),
     cp(path.join(projectRoot, 'playground.css'), path.join(outputRoot, 'playground.css')),
+    cp(path.join(projectRoot, 'motion.js'), path.join(outputRoot, 'motion.js')),
+    cp(path.join(projectRoot, 'motion.css'), path.join(outputRoot, 'motion.css')),
     cp(path.join(projectRoot, 'robots.txt'), path.join(outputRoot, 'robots.txt')),
     cp(path.join(projectRoot, 'sitemap.xml'), path.join(outputRoot, 'sitemap.xml')),
     ...assets.map((asset) =>
       downloadAsset(asset, path.join(outputRoot, 'downloads', latestRelease.tag_name, asset.name)),
     ),
   ]);
+
+  // Bundle pinned motion dependencies locally so the homepage never depends on a CDN.
+  await mkdir(path.join(outputRoot, 'assets', 'vendor'), { recursive: true });
+  for (const file of ['gsap.min.js', 'Flip.min.js']) {
+    await cp(path.join(projectRoot, 'node_modules', 'gsap', 'dist', file), path.join(outputRoot, 'assets', 'vendor', file));
+  }
 
   const homepageReplacements = {
     LATEST_TAG: escapeHtml(latestRelease.tag_name),

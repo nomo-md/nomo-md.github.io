@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/product-demo.css" />
     <link rel="stylesheet" href="/playground.css" />
+    <link rel="stylesheet" href="/motion.css" />
     <title>Nomo | Write like a document. Save as Markdown.</title>
     <script type="application/ld+json">
       {
@@ -1037,6 +1038,14 @@
                 ><span class="n-writing-count" data-unit=" words">25 words</span>
               </div>
             </div>
+            <div class="nv-writing-controls">
+              <div class="nv-writing-stages" aria-hidden="true"><span data-writing-stage="0">Write an idea</span><span data-writing-stage="1">Insert a table</span><span data-writing-stage="2">A document takes shape</span></div>
+              <div class="nv-motion-actions">
+                <button type="button" class="nv-motion-link" data-writing-replay disabled>Replay<span aria-hidden="true"> ↺</span></button>
+                <button type="button" class="nv-motion-link" data-motion-toggle aria-pressed="false" hidden>Pause motion</button>
+              </div>
+            </div>
+            <div class="nv-writing-track" aria-hidden="true"><span class="nv-writing-progress"></span></div>
           </div>
         </section>
         <section class="nv-section nv-playground" id="nv-playground" aria-labelledby="nv-playground-title">
@@ -2218,113 +2227,20 @@
                 the file you need.
               </p>
               <div class="nv-outline-demo">
-                <div class="nv-outline-caption">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    class="n-app-icon"
-                    focusable="false"
-                  >
-                    <!---->
-                    <path d="M8 5h13"></path>
-                    <!---->
-                    <path d="M13 12h8"></path>
-                    <!---->
-                    <path d="M13 19h8"></path>
-                    <!---->
-                    <path d="M3 10a2 2 0 0 0 2 2h3"></path>
-                    <!---->
-                    <path d="M3 5v12a2 2 0 0 0 2 2h3"></path>
-                    <!----><!----></svg
-                  ><span>Document outline</span>
+                <div class="nv-outline-caption">Document outline</div>
+                <div class="nv-outline-workspace">
+                  <div class="nv-outline-navigation">
+                    <button class="nv-outline-button nv-selected" data-outline="intro" type="button" aria-pressed="true" disabled aria-controls="outline-excerpt" data-excerpt="Start with an idea. Give it structure later."><span class="nv-outline-chevron" aria-hidden="true">›</span>Before you begin</button>
+                    <button class="nv-outline-button" data-outline="writing" type="button" aria-pressed="false" disabled aria-controls="outline-excerpt" data-excerpt="Bring related thoughts into a chapter."><span class="nv-outline-chevron" aria-hidden="true">›</span>Capture & organize</button>
+                    <button class="nv-outline-button" data-outline="next" type="button" aria-pressed="false" disabled aria-controls="outline-excerpt" data-excerpt="Leave a clear next step for tomorrow."><span class="nv-outline-chevron" aria-hidden="true">›</span>Next steps</button>
+                  </div>
+                  <div class="nv-outline-paper" aria-hidden="true">
+                    <div class="nv-outline-chapter is-active" data-chapter="intro"><span>Before you begin</span><div class="nv-outline-lines"><i></i><i></i></div></div>
+                    <div class="nv-outline-chapter" data-chapter="writing"><span>Capture & organize</span><div class="nv-outline-lines"><i></i><i></i></div></div>
+                    <div class="nv-outline-chapter" data-chapter="next"><span>Next steps</span><div class="nv-outline-lines"><i></i><i></i></div></div>
+                  </div>
                 </div>
-                <button
-                  class="nv-outline-button nv-selected"
-                  data-outline="intro"
-                  type="button"
-                  aria-pressed="true"
-                  disabled=""
-                  aria-controls="outline-excerpt"
-                  data-excerpt="Capture an idea. Organize it when you are ready."
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    class="nv-icon"
-                    focusable="false"
-                  >
-                    <path d="m9 18 6-6-6-6"></path></svg
-                  >Before you begin</button
-                ><button
-                  class="nv-outline-button"
-                  data-outline="writing"
-                  type="button"
-                  aria-pressed="false"
-                  disabled=""
-                  aria-controls="outline-excerpt"
-                  data-excerpt="Give your ideas a structure and navigate the draft by its headings."
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    class="nv-icon"
-                    focusable="false"
-                  >
-                    <path d="m9 18 6-6-6-6"></path></svg
-                  >Write and organize</button
-                ><button
-                  class="nv-outline-button"
-                  data-outline="next"
-                  type="button"
-                  aria-pressed="false"
-                  disabled=""
-                  aria-controls="outline-excerpt"
-                  data-excerpt="List the next steps and give your document a direction."
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    class="nv-icon"
-                    focusable="false"
-                  >
-                    <path d="m9 18 6-6-6-6"></path></svg
-                  >What comes next
-                </button>
-                <div class="nv-outline-result" aria-live="polite" id="outline-excerpt">
-                  Capture an idea. Organize it when you are ready.
-                </div>
+                <div class="nv-outline-result" id="outline-excerpt">Start with an idea. Give it structure later.</div>
               </div>
             </article>
           </div>
@@ -2780,7 +2696,10 @@
         </nav>
       </footer>
     </div>
+    <script src="/assets/vendor/gsap.min.js" defer=""></script>
+    <script src="/assets/vendor/Flip.min.js" defer=""></script>
     <script src="/script.js" defer=""></script>
+    <script src="/motion.js" defer=""></script>
     <script src="/playground.js" defer=""></script>
   </body>
 </html>

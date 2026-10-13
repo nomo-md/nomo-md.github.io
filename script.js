@@ -122,6 +122,7 @@ if (homepage) {
   homepage.querySelectorAll('[data-feature-mode]').forEach((button) => {
     button.disabled = false;
     button.addEventListener('click', () => {
+      if (homepage.dataset.motionReady) return;
       const source = button.dataset.featureMode === 'source';
       homepage.querySelector('.nv-mode-semantic').hidden = source;
       homepage.querySelector('.nv-mode-source').hidden = !source;
@@ -134,6 +135,7 @@ if (homepage) {
   homepage.querySelectorAll('[data-outline]').forEach((button) => {
     button.disabled = false;
     button.addEventListener('click', () => {
+      if (homepage.dataset.motionReady) return;
       homepage.querySelectorAll('[data-outline]').forEach((item) => {
         item.classList.toggle('nv-selected', item === button);
         item.setAttribute('aria-pressed', String(item === button));
@@ -146,6 +148,7 @@ if (homepage) {
   const focusCaption = homepage.querySelector('.nv-desktop-caption');
   focusButton.disabled = false;
   focusButton.addEventListener('click', () => {
+    if (homepage.dataset.motionReady) return;
     const mini = homepage.querySelector('.nv-small-app').classList.toggle('nv-is-mini');
     focusButton.setAttribute('aria-pressed', String(mini));
     focusButton.textContent = mini ? focusButton.dataset.miniLabel : focusButton.dataset.normalLabel;
@@ -208,7 +211,6 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   const listTexts = [...fallback.querySelectorAll('li')].map((item) => item.textContent);
   const cellTexts = [...fallback.querySelectorAll('th,td')].map((item) => item.textContent);
   const total = 15800;
-  const cycleDuration = total + 2000;
   const canvas = document.createElement('canvas').getContext('2d');
   let time = total;
   let began = false;
@@ -217,6 +219,9 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   let anchor = 0;
   let layout = null;
   let pointerBounds = null;
+  let motionPaused = false;
+  const stages = [...root.querySelectorAll('[data-writing-stage]')];
+  const progressLine = root.querySelector('.nv-writing-progress');
   let bodyLines = [...root.querySelectorAll('.n-body-line')];
   const clamp = (value) => Math.max(0, Math.min(1, value));
   const setText = (element, value) => {
@@ -343,6 +348,9 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   }
 
   function render() {
+    const stage = time < 7450 ? 0 : time < 14000 ? 1 : 2;
+    stages.forEach((item, index) => item.classList.toggle('is-current', index === stage));
+    if (progressLine) progressLine.style.transform = `scaleX(${Math.min(1, time / total)})`;
     if (!layout) return;
     if (reducedMotion.matches) {
       time = total;
@@ -422,23 +430,33 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   }
 
   function tick(now) {
-    // 完成后停留两秒再从头播放；离屏或页面隐藏时由 run 暂停计时。
-    time = (now - anchor) % cycleDuration;
+    // Play once and leave the finished document in place; replay is an explicit action.
+    time = Math.min(total, now - anchor);
     render();
-    if (inView && !document.hidden && !reducedMotion.matches) frame = requestAnimationFrame(tick);
+    if (inView && !document.hidden && !reducedMotion.matches && !motionPaused && time < total)
+      frame = requestAnimationFrame(tick);
   }
   function run() {
     cancelAnimationFrame(frame);
     anchor = performance.now() - time;
-    if (inView && !document.hidden && !reducedMotion.matches)
+    if (inView && !document.hidden && !reducedMotion.matches && !motionPaused && time < total)
       frame = requestAnimationFrame(tick);
   }
   function replay() {
     began = true;
-    time = reducedMotion.matches ? total : 0;
+    time = reducedMotion.matches || motionPaused ? total : 0;
     render();
     run();
   }
+  const replayButton = root.querySelector('[data-writing-replay]');
+  if (replayButton) {
+    replayButton.disabled = false;
+    replayButton.addEventListener('click', replay);
+  }
+  homepage.addEventListener('nomo:motion', (event) => {
+    motionPaused = event.detail.paused;
+    run();
+  });
   const settle = () => {
     panel.style.setProperty('--rx', '0deg');
     panel.style.setProperty('--ry', '0deg');

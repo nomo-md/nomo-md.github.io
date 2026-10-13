@@ -1,0 +1,163 @@
+/* Motion is a progressive enhancement: all content stays visible without JavaScript. */
+#nomo-site .nv-writing-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+#nomo-site .nv-writing-stages,
+#nomo-site .nv-motion-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#nomo-site .nv-writing-stages {
+  color: var(--n-muted);
+  font-size: 12px;
+}
+#nomo-site .nv-writing-stages span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 300ms;
+}
+#nomo-site .nv-writing-stages span::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .35;
+  transition: opacity 300ms;
+}
+#nomo-site .nv-writing-stages .is-current {
+  color: #bad4cd;
+}
+#nomo-site .nv-writing-stages .is-current::before { opacity: 1; }
+#nomo-site .nv-motion-link {
+  min-height: 36px;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--n-muted);
+  cursor: pointer;
+  font-size: 12px;
+  transition: color 180ms;
+}
+#nomo-site .nv-motion-link:hover { color: var(--n-text); }
+#nomo-site .nv-motion-link:disabled { opacity: .45; cursor: default; }
+#nomo-site .nv-writing-track {
+  height: 1px;
+  margin-top: 14px;
+  background: #afbdcc22;
+}
+#nomo-site .nv-writing-progress {
+  display: block;
+  height: 100%;
+  background: #9bbfb3;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+#nomo-site .nv-demo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  margin-top: 14px;
+  color: var(--n-muted);
+  font-size: 12px;
+}
+#nomo-site .nv-demo-status { max-width: 78%; }
+#nomo-site .nv-feature-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+#nomo-site .nv-mode-body { min-height: 270px; position: relative; }
+#nomo-site .nv-mode-source { min-height: 220px; }
+#nomo-site .nv-mode-semantic { min-height: 220px; }
+#nomo-site .nv-mode-semantic h4 { transform-origin: left center; }
+#nomo-site .nv-mode-typing {
+  position: absolute;
+  inset: 24px auto auto 24px;
+  color: var(--app-text);
+  font: 14px/1.8 "Cascadia Code", Consolas, monospace;
+  pointer-events: none;
+}
+#nomo-site .nv-insert-hint {
+  position: absolute;
+  left: 24px;
+  top: 132px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 9px 12px;
+  border: 1px solid var(--app-border);
+  border-radius: 6px;
+  background: var(--app-paper);
+  box-shadow: 0 6px 18px #12233518;
+  color: var(--app-text);
+  font-size: 12px;
+  pointer-events: none;
+}
+#nomo-site .nv-insert-hint kbd { color: var(--app-accent); }
+#nomo-site .nv-outline-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 12px;
+  min-height: 238px;
+}
+#nomo-site .nv-outline-navigation { min-width: 0; }
+#nomo-site .nv-outline-button { min-height: 44px; font-size: 12px; gap: 5px; }
+#nomo-site .nv-outline-chevron { font-size: 16px; transition: transform 300ms; }
+#nomo-site .nv-outline-button.is-folded .nv-outline-chevron { transform: rotate(-90deg); }
+#nomo-site .nv-outline-paper {
+  align-self: start;
+  min-height: 238px;
+  border: 1px solid var(--app-border);
+  border-radius: 5px;
+  padding: 13px 10px;
+  background: var(--app-paper);
+  box-shadow: 0 3px 12px #12233508;
+}
+#nomo-site .nv-outline-chapter { padding: 10px 7px; border-radius: 3px; }
+#nomo-site .nv-outline-chapter > span { color: var(--app-heading); font-size: 11px; font-weight: 600; }
+#nomo-site .nv-outline-chapter.is-active { background: var(--app-active); }
+#nomo-site .nv-outline-lines { padding-top: 9px; }
+#nomo-site .nv-outline-lines i {
+  display: block;
+  height: 3px;
+  margin-bottom: 6px;
+  background: var(--app-muted);
+  opacity: .18;
+  border-radius: 2px;
+}
+#nomo-site .nv-outline-lines i:last-child { width: 70%; }
+#nomo-site .nv-outline-chapter.is-folded .nv-outline-lines { display: none; }
+#nomo-site .nv-outline-result { min-height: 70px; }
+#nomo-site[data-motion-ready] .nv-small-app { transition: none; }
+#nomo-site[data-motion-ready] .nv-small-app.nv-is-mini { transform: none; }
+#nomo-site .nv-focus-desktop { min-height: 350px; }
+#nomo-site .nv-focus-copy .nv-demo-caption { justify-content: flex-start; }
+#nomo-site .nv-focus-copy .nv-demo-status { max-width: none; }
+@media (max-width: 800px) {
+  #nomo-site .nv-feature-grid { grid-template-columns: 1fr; }
+  #nomo-site .nv-feature-secondary { margin-top: 0; }
+}
+@media (max-width: 540px) {
+  #nomo-site .nv-writing-controls { gap: 4px; }
+  #nomo-site .nv-writing-stages { gap: 12px; font-size: 11px; }
+  #nomo-site .nv-motion-link { min-height: 44px; }
+  #nomo-site .nv-outline-workspace { gap: 6px; }
+  #nomo-site .nv-outline-button { padding-inline: 5px; }
+  #nomo-site .nv-outline-paper { padding-inline: 5px; }
+  #nomo-site .nv-focus-desktop { padding-inline: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nomo-site .nv-writing-stages span,
+  #nomo-site .nv-outline-chevron { transition: none; }
+}
