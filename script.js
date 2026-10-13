@@ -104,9 +104,10 @@ const homepage = document.getElementById('nomo-site');
 if (homepage) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  const replayWriting = setupWritingDemo(homepage, reducedMotion, finePointer);
+  const writingDemo = homepage.querySelector('#nv-writing');
+  const replayWriting = setupWritingDemo(writingDemo, reducedMotion, finePointer);
 
-  const previewThemeButton = homepage.querySelector('.n-theme-toggle');
+  const previewThemeButton = writingDemo.querySelector('.n-theme-toggle');
   previewThemeButton.disabled = false;
   previewThemeButton.addEventListener('click', () => {
     const dark = homepage.dataset.productTheme !== 'dark';
@@ -188,9 +189,6 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   const paper = root.querySelector('.n-paper');
   const svg = root.querySelector('.n-writing-svg');
   const panel = root.querySelector('.n-window');
-  const pauseButton = root.querySelector('.n-pause');
-  const replayButton = root.querySelector('.n-replay');
-  const stageLabel = root.querySelector('.n-stage-label');
   const title = root.querySelector('.n-doc-title');
   const rawTitle = root.querySelector('.n-raw-title');
   const listRows = [...root.querySelectorAll('.n-list-row')];
@@ -209,22 +207,10 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   const bodyText = fallback.querySelector('p').textContent;
   const listTexts = [...fallback.querySelectorAll('li')].map((item) => item.textContent);
   const cellTexts = [...fallback.querySelectorAll('th,td')].map((item) => item.textContent);
-  const stages = pageLanguage.startsWith('en')
-    ? [
-        'Write a heading',
-        'Add a paragraph',
-        'Organize a list',
-        'Insert a table',
-        'Fill the table',
-        'Document complete',
-      ]
-    : ['写入标题', '写下正文', '整理列表', '快捷插入表格', '填写表格', '文档已成形'];
-
   const total = 15800;
   const cycleDuration = total + 2000;
   const canvas = document.createElement('canvas').getContext('2d');
   let time = total;
-  let paused = false;
   let began = false;
   let inView = !('IntersectionObserver' in window);
   let frame = 0;
@@ -360,7 +346,6 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
     if (!layout) return;
     if (reducedMotion.matches) {
       time = total;
-      paused = false;
     }
     const { x, lines, listY, tableY } = layout;
     const titleValue = typed(titleText, 450, 1700);
@@ -434,48 +419,26 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
     attr(caret, 'y', cy);
     attr(caret, 'height', height);
     visible(caret, time < 14200 && !(time >= 8700 && time < 9350));
-    const stage =
-      time < 2450 ? 0 : time < 4350 ? 1 : time < 7450 ? 2 : time < 8700 ? 3 : time < 14200 ? 4 : 5;
-    setText(stageLabel, stages[stage]);
-    setText(
-      pauseButton,
-      time >= total
-        ? pauseButton.dataset.completeLabel
-        : paused
-          ? pauseButton.dataset.resumeLabel
-          : pauseButton.dataset.pauseLabel,
-    );
-    pauseButton.disabled = time >= total || reducedMotion.matches;
   }
 
   function tick(now) {
     // 完成后停留两秒再从头播放；离屏或页面隐藏时由 run 暂停计时。
     time = (now - anchor) % cycleDuration;
     render();
-    if (!paused) frame = requestAnimationFrame(tick);
+    if (inView && !document.hidden && !reducedMotion.matches) frame = requestAnimationFrame(tick);
   }
   function run() {
     cancelAnimationFrame(frame);
     anchor = performance.now() - time;
-    if (inView && !document.hidden && !paused && !reducedMotion.matches)
+    if (inView && !document.hidden && !reducedMotion.matches)
       frame = requestAnimationFrame(tick);
   }
   function replay() {
     began = true;
     time = reducedMotion.matches ? total : 0;
-    paused = false;
     render();
     run();
   }
-  pauseButton.addEventListener('click', () => {
-    if (time >= total || reducedMotion.matches) return;
-    paused = !paused;
-    run();
-    render();
-  });
-  replayButton.disabled = false;
-  replayButton.addEventListener('click', replay);
-
   const settle = () => {
     panel.style.setProperty('--rx', '0deg');
     panel.style.setProperty('--ry', '0deg');
@@ -502,7 +465,6 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
     settle();
     if (reducedMotion.matches) {
       time = total;
-      paused = false;
     }
     run();
     render();
@@ -510,9 +472,8 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   document.addEventListener('visibilitychange', run);
 
   measure();
-  root.setAttribute('data-writer-ready', '');
+  homepage.setAttribute('data-writer-ready', '');
   svg.removeAttribute('aria-hidden');
-  root.querySelector('.nv-demo-controls-right').hidden = false;
   if ('ResizeObserver' in window) new ResizeObserver(() => measure()).observe(paper);
   else window.addEventListener('resize', () => measure(), { passive: true });
   document.fonts?.ready.then(() => measure(true));

@@ -1,5 +1,6 @@
 /* The preview follows Nomo v0.5.6's default palette and desktop chrome. */
-#nomo-site {
+#nomo-site,
+#nomo-site [data-playground][data-demo-theme="light"] {
   --app-rail: #f3f4f6;
   --app-paper: #ffffff;
   --app-chrome: #f3f4f6;
@@ -14,7 +15,8 @@
   --app-code: #f5f6f8;
   --app-menu: #ffffff;
 }
-#nomo-site[data-product-theme="dark"] {
+#nomo-site[data-product-theme="dark"],
+#nomo-site [data-playground][data-demo-theme="dark"] {
   --app-rail: #181d23;
   --app-paper: #1d2229;
   --app-chrome: #20262e;

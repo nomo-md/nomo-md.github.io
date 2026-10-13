@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/product-demo.css" />
+    <link rel="stylesheet" href="/playground.css" />
     <title>Nomo | Write like a document. Save as Markdown.</title>
     <script type="application/ld+json">
       {
@@ -144,6 +145,7 @@
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path></svg
                 ></a>
+                <a class="nv-link nv-try" href="#nv-playground">Try it yourself<span aria-hidden="true">↓</span></a>
               </div>
               <div class="nv-trust-strip">
                 <span>Local files</span><span>Open source</span><span>Windows / macOS</span>
@@ -1035,19 +1037,1022 @@
                 ><span class="n-writing-count" data-unit=" words">25 words</span>
               </div>
             </div>
-            <div class="nv-demo-controls" hidden>
-              <span class="n-stage-label" role="status">Document preview</span>
-              <div class="nv-demo-controls-right" hidden="">
-                <button
-                  class="nv-button nv-button-small n-pause"
-                  type="button"
-                  disabled=""
-                  data-pause-label="Pause"
-                  data-resume-label="Resume"
-                  data-complete-label="Finished"
-                >
-                  Pause</button
-                ><button class="nv-button nv-button-small n-replay" type="button" disabled="">Replay</button>
+          </div>
+        </section>
+        <section class="nv-section nv-playground" id="nv-playground" aria-labelledby="nv-playground-title">
+          <div class="nv-shell pg-shell">
+            <div class="pg-heading">
+              <div>
+                <div class="nv-eyebrow">A little room to explore</div>
+                <h2 id="nv-playground-title">Click around. Make yourself at home.</h2>
+                <p class="nv-section-lede">Switch a file, peek at the Markdown, or check something off.</p>
+              </div>
+              <span class="pg-demo-note">Interactive preview with sample content</span>
+            </div>
+            <div
+              class="pg-stage"
+              data-playground=""
+              data-demo-theme="light"
+              data-mode="document"
+              data-sidebar-open="true"
+              data-outline-open="true"
+              role="region"
+              aria-label="Nomo interactive preview"
+            >
+              <div class="pg-window">
+                <div class="n-titlebar pg-titlebar">
+                  <button
+                    class="pg-icon-button"
+                    type="button"
+                    disabled=""
+                    data-pg-action="sidebar"
+                    aria-label="Toggle file sidebar"
+                    title="Toggle file sidebar"
+                    aria-controls="pg-files"
+                    aria-expanded="true"
+                  >
+                    <svg
+                      class="n-app-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                      <path d="M9 3v18m5-6-3-3 3-3"></path>
+                    </svg></button
+                  ><span class="n-app-name" translate="no">Nomo</span>
+                  <div class="n-titlebar-menu" aria-hidden="true">
+                    <span>File</span><span>Edit</span><span>Paragraph</span><span>Format</span
+                    ><span>View</span><span>Settings</span>
+                  </div>
+                  <div class="n-titlebar-actions">
+                    <span class="pg-caption-decoration" aria-hidden="true"
+                      ><svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M21 13V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"></path>
+                        <rect x="12" y="12" width="10" height="10" rx="2"></rect></svg></span
+                    ><button
+                      class="pg-icon-button pg-theme-toggle"
+                      type="button"
+                      aria-pressed="false"
+                      aria-label="Switch the preview to dark theme"
+                      disabled=""
+                      data-pg-action="theme"
+                      title="Switch preview to dark theme"
+                    >
+                      <span class="pg-moon"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path></svg></span
+                      ><span class="pg-sun"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <circle cx="12" cy="12" r="4"></circle>
+                          <path
+                            d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+                          ></path></svg
+                      ></span></button
+                    ><span class="n-caption-controls" aria-hidden="true"
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M5 12h14"></path></svg></span
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <rect x="5" y="5" width="14" height="14" rx=".5"></rect></svg></span
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="m6 6 12 12M6 18 18 6"></path></svg></span
+                    ></span>
+                  </div>
+                </div>
+                <div class="pg-layout">
+                  <aside class="pg-sidebar" id="pg-files" aria-label="Sample files">
+                    <div class="pg-folder-title">
+                      <svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m6 9 6 6 6-6"></path></svg
+                      ><svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m3 8 3-4h5l2 3h8v13H3Z"></path>
+                        <path d="M3 10h18"></path></svg
+                      ><span>Current folder</span>
+                    </div>
+                    <div class="pg-file-list">
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="project"
+                        aria-pressed="true"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>Project notes.md</span>
+                      </button>
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="plan"
+                        aria-pressed="false"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>Weekly plan.md</span>
+                      </button>
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="reading"
+                        aria-pressed="false"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>Reading notes.md</span>
+                      </button>
+                    </div>
+                  </aside>
+                  <div class="pg-workspace">
+                    <div class="pg-tabs">
+                      <div class="pg-document-tab">
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span data-pg-filename="">Project notes.md</span
+                        ><span class="pg-tab-close" aria-hidden="true"
+                          ><svg
+                            class="n-app-icon"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="m6 6 12 12M6 18 18 6"></path></svg
+                        ></span>
+                      </div>
+                      <span class="pg-tab-add" aria-hidden="true"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M12 5v14M5 12h14"></path></svg
+                      ></span>
+                    </div>
+                    <div class="n-toolbar pg-toolbar" aria-label="Document toolbar">
+                      <div class="n-toolbar-core" aria-hidden="true">
+                        <span class="n-app-tool n-tool-0" title="Heading"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M4 12h8"></path>
+                            <!---->
+                            <path d="M4 18V6"></path>
+                            <!---->
+                            <path d="M12 18V6"></path>
+                            <!---->
+                            <path d="m17 12 3-2v8"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-1" title="Bold"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-2" title="Italic"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <line x1="19" x2="10" y1="4" y2="4"></line>
+                            <!---->
+                            <line x1="14" x2="5" y1="20" y2="20"></line>
+                            <!---->
+                            <line x1="15" x2="9" y1="4" y2="20"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-3" title="Strikethrough"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M16 4H9a3 3 0 0 0-2.83 4"></path>
+                            <!---->
+                            <path d="M14 12a4 4 0 0 1 0 8H6"></path>
+                            <!---->
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-4" title="Underline"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M6 4v6a6 6 0 0 0 12 0V4"></path>
+                            <!---->
+                            <line x1="4" x2="20" y1="20" y2="20"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-5" title="Highlight"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m9 11-6 6v3h9l3-3"></path>
+                            <!---->
+                            <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-6" title="Link"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <!---->
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <div class="n-toolbar-extra" aria-hidden="true">
+                        <span class="n-app-tool n-tool-0" title="Inline comment"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-1" title="Quote"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                            ></path>
+                            <!---->
+                            <path
+                              d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-2" title="Bullet list"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M3 5h.01"></path>
+                            <!---->
+                            <path d="M3 12h.01"></path>
+                            <!---->
+                            <path d="M3 19h.01"></path>
+                            <!---->
+                            <path d="M8 5h13"></path>
+                            <!---->
+                            <path d="M8 12h13"></path>
+                            <!---->
+                            <path d="M8 19h13"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-3" title="Task list"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"
+                            ></path>
+                            <!---->
+                            <path d="m9 11 3 3L22 4"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-4" title="Table"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-5" title="Code block"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m18 16 4-4-4-4"></path>
+                            <!---->
+                            <path d="m6 8-4 4 4 4"></path>
+                            <!---->
+                            <path d="m14.5 4-5 16"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <div class="n-content-width" aria-hidden="true"><span>60%</span><i></i></div>
+                      <div class="n-mode-switch pg-mode-switch" role="group" aria-label="Reading mode">
+                        <button
+                          class="pg-icon-button"
+                          type="button"
+                          disabled=""
+                          aria-label="Document view"
+                          title="Document view"
+                          data-pg-mode="document"
+                          aria-pressed="true"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M12 7v14"></path>
+                            <!---->
+                            <path d="M16 12h2"></path>
+                            <!---->
+                            <path d="M16 8h2"></path>
+                            <!---->
+                            <path
+                              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+                            ></path>
+                            <!---->
+                            <path d="M6 12h2"></path>
+                            <!---->
+                            <path d="M6 8h2"></path>
+                            <!----><!---->
+                          </svg></button
+                        ><button
+                          class="pg-icon-button"
+                          type="button"
+                          disabled=""
+                          aria-label="Markdown source"
+                          title="Markdown source"
+                          data-pg-mode="source"
+                          aria-pressed="false"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m18 16 4-4-4-4"></path>
+                            <!---->
+                            <path d="m6 8-4 4 4 4"></path>
+                            <!---->
+                            <path d="m14.5 4-5 16"></path>
+                            <!----><!---->
+                          </svg></button
+                        ><span class="pg-format-decoration" title="Split view" aria-hidden="true"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                            <!---->
+                            <path d="M12 3v18"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <button
+                        class="pg-icon-button pg-outline-toggle"
+                        type="button"
+                        disabled=""
+                        data-pg-action="outline"
+                        aria-label="Toggle document outline"
+                        title="Toggle document outline"
+                        aria-controls="pg-outline"
+                        aria-expanded="true"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          class="n-app-icon"
+                          focusable="false"
+                        >
+                          <!---->
+                          <path d="M8 5h13"></path>
+                          <!---->
+                          <path d="M13 12h8"></path>
+                          <!---->
+                          <path d="M13 19h8"></path>
+                          <!---->
+                          <path d="M3 10a2 2 0 0 0 2 2h3"></path>
+                          <!---->
+                          <path d="M3 5v12a2 2 0 0 0 2 2h3"></path>
+                          <!----><!---->
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="pg-body">
+                      <div
+                        class="pg-document-scroll"
+                        tabindex="0"
+                        role="region"
+                        aria-label="Sample document content"
+                      >
+                        <div class="pg-documents">
+                          <article class="pg-document" data-pg-document="project">
+                            <h3>Today’s project notes</h3>
+                            <p class="pg-document-intro">Get the idea down. Organize it later.</p>
+                            <section>
+                              <h4>Start with a thought</h4>
+                              <p>
+                                A note does not need a perfect structure. Write down the question in front
+                                of you, then start connecting the pieces.
+                              </p>
+                              <p>
+                                Today, make the homepage demo easier to explore: watch a document take
+                                shape, then try the familiar interface yourself.
+                              </p>
+                            </section>
+                            <section>
+                              <h4>A few things for today</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" checked="" disabled="" /><span
+                                      >Collect the ideas so far</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Review the homepage demo</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Leave a note to pick up tomorrow</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>Where things stand</h4>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Status</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Organize notes</td>
+                                    <td>Me</td>
+                                    <td>Done</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Homepage demo</td>
+                                    <td>Me</td>
+                                    <td>In progress</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Review details</td>
+                                    <td>Me</td>
+                                    <td>Up next</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </section>
+                            <section>
+                              <h4>For tomorrow</h4>
+                              <blockquote>
+                                <p>Leave the thought on the page. Make the next start a little easier.</p>
+                              </blockquote>
+                              <p>
+                                When you return, add what you have learned and remove what no longer
+                                matters.
+                              </p>
+                            </section>
+                          </article>
+                          <article class="pg-document" data-pg-document="plan" hidden="">
+                            <h3>This week’s plan</h3>
+                            <p class="pg-document-intro">Keep the important things in view.</p>
+                            <section>
+                              <h4>This week’s priorities</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" checked="" disabled="" /><span
+                                      >List the work for this week</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Review the first version of the page</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Collect feedback and choose the next step</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>Make room to focus</h4>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">When</th>
+                                    <th scope="col">What</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Monday</td>
+                                    <td>Gather requirements and references</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Wednesday</td>
+                                    <td>Work through the page changes</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Friday</td>
+                                    <td>Review progress and file the notes</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </section>
+                            <section>
+                              <h4>Before the discussion</h4>
+                              <p>
+                                Bring a clear question and a concrete example. Write down anything you
+                                cannot decide yet, with a next step beside it.
+                              </p>
+                              <p>
+                                Leave a stretch of time without meetings for the work that needs an
+                                uninterrupted train of thought.
+                              </p>
+                            </section>
+                            <section>
+                              <h4>At the end of the week</h4>
+                              <blockquote>
+                                <p>A plan helps you choose the next thing worth doing.</p>
+                              </blockquote>
+                              <p>
+                                Note what you finished, what got in the way, and one small change to try
+                                next week.
+                              </p>
+                            </section>
+                          </article>
+                          <article class="pg-document" data-pg-document="reading" hidden="">
+                            <h3>Reading notes</h3>
+                            <p class="pg-document-intro">Keep a passage. Leave a thought of your own.</p>
+                            <section>
+                              <h4>Hold on to the idea</h4>
+                              <blockquote>
+                                <p>
+                                  Once a thought is on the page, it has a shape you can return to and
+                                  discuss.
+                                </p>
+                              </blockquote>
+                              <p>
+                                An excerpt does not have to be long. It only needs to remind you why you
+                                paused when you first read it.
+                              </p>
+                            </section>
+                            <section>
+                              <h4>In my own words</h4>
+                              <p>
+                                Taking notes is also a way of reorganizing an idea. Explain it in your own
+                                words, then look for what is still unclear.
+                              </p>
+                              <ul>
+                                <li>Sum up what you learned in a sentence</li>
+                                <li>Explain it with a specific example</li>
+                                <li>Leave a question you want to explore</li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>Something to try</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Write down my own interpretation</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >Use the idea in my next note</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>For my future self</h4>
+                              <p>
+                                You do not need to record every page. Keep what changed your mind, raised a
+                                question, or made you want to try something.
+                              </p>
+                            </section>
+                          </article>
+                        </div>
+                        <pre class="pg-source" hidden=""><code></code></pre>
+                      </div>
+                      <nav class="pg-outline" id="pg-outline" aria-label="Outline">
+                        <div class="pg-outline-title">Document outline</div>
+                        <div data-pg-outline-items=""></div>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                <div class="pg-statusbar">
+                  <span class="pg-zoom">100%</span><span data-pg-count=""></span>
+                </div>
+              </div>
+              <div class="pg-caption">
+                <span>Sample content. Switch a file or check off a task.</span
+                ><span class="pg-live" data-pg-status="" role="status" aria-live="polite"></span
+                ><button class="pg-reset" type="button" data-pg-action="reset" disabled="">
+                  <svg
+                    class="n-app-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 10a9 9 0 1 1 2.6 8.4M3 4v6h6"></path></svg
+                  ><span>Reset preview</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1776,5 +2781,6 @@
       </footer>
     </div>
     <script src="/script.js" defer=""></script>
+    <script src="/playground.js" defer=""></script>
   </body>
 </html>

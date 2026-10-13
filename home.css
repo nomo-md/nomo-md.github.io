@@ -1,10 +1,10 @@
 #nomo-site {
   --n-page: var(--page);
-  --n-surface: #2d3947;
+  --n-surface: #2d3d49;
   --n-editor: #303c4b;
   --n-chrome: #293441;
   --n-menu: #364453;
-  --n-text: #f0f3f7;
+  --n-text: #eef3f5;
   --n-body: #d3dce6;
   --n-muted: #afbdcc;
   --n-border: #465565;
@@ -12,13 +12,16 @@
   --n-accent: #cad6e5;
   --n-glow: #a0b6d51c;
   --n-shadow: #1320313d;
+  --n-light: #79b6a5;
+  --n-rim: #a8b9cc;
   --nv-pad: clamp(20px, 6vw, 64px);
   width: 100%;
+  overflow-x: clip;
   color-scheme: dark;
   background:
-    radial-gradient(ellipse 900px 720px at 0% 0%, var(--atmosphere-cool), transparent 72%),
-    radial-gradient(ellipse 760px 560px at 100% 12%, var(--atmosphere-warm), transparent 76%),
-    radial-gradient(ellipse 950px 700px at 10% 65%, #3f718328, transparent 75%),
+    radial-gradient(ellipse 1000px 800px at 0% 0%, #79b6a529, transparent 72%),
+    radial-gradient(ellipse 800px 900px at 100% 18%, #a8b9cc12, transparent 76%),
+    radial-gradient(ellipse 950px 700px at 10% 65%, #79b6a512, transparent 75%),
     var(--n-page);
   color: var(--n-text);
   font-family: var(--font-site);
@@ -204,13 +207,33 @@
   padding: 7px 0 0;
   perspective: 1600px;
   position: relative;
+  isolation: isolate;
 }
 #nomo-site .nv-hero-demo::before {
   content: "";
   position: absolute;
-  inset: -36px -15px -24px;
+  inset: -100px -110px -40px;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 40%, #90b8ad24, transparent 70%);
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 30% 54% at 8% 44%, #79b6a552, transparent 78%),
+    radial-gradient(ellipse 32% 58% at 94% 66%, #a8b9cc38, transparent 78%),
+    radial-gradient(ellipse 62% 22% at 50% 83%, #79b6a54a, transparent 80%);
+  filter: blur(24px);
+}
+#nomo-site .nv-hero-demo > .n-window {
+  border-color: #a8b9cc99;
+  box-shadow:
+    0 0 0 1px #a8b9cc1c,
+    0 2px 5px #101c2640,
+    0 24px 48px -18px #09151fc2,
+    0 48px 90px -30px #0b192e99;
+}
+#nomo-site .nv-try {
+  color: #bad4cd;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 #nomo-site .n-window {
   --rx: 0deg;
@@ -228,19 +251,8 @@
   transition: transform 200ms ease-out;
 }
 #nomo-site .n-window::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 3;
-  background: radial-gradient(
-    210px circle at var(--sx) var(--sy),
-    var(--n-glow),
-    transparent 80%
-  );
-  opacity: var(--light);
-  transition: opacity 250ms;
+  /* Keep the page light outside the document surface. */
+  content: none;
 }
 #nomo-site .n-window::after {
   content: "";
@@ -396,23 +408,8 @@
   fill: var(--n-text);
   font-weight: 500;
 }
-#nomo-site .nv-demo-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 13px;
-  color: var(--n-muted);
-  font-size: 11px;
-}
-#nomo-site .nv-demo-controls-right {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
 #nomo-site .nv-section {
-  padding-block: clamp(64px, 7vw, 96px);
+  padding-block: clamp(80px, 7vw, 112px);
   border-top: 0;
 }
 #nomo-site .nv-eyebrow {
@@ -448,21 +445,21 @@
   --spot-y: 50%;
   --spot-alpha: 0;
   padding: clamp(24px, 3vw, 36px);
-  background: #2b3845;
-  border: 1px solid #afbdcc30;
+  background: #2d3d4980;
+  border: 1px solid #afbdcc20;
   border-radius: 16px;
   position: relative;
   min-width: 0;
 }
 #nomo-site .nv-feature-primary {
   background:
-    radial-gradient(ellipse at 0% 0%, #86b1a633, transparent 75%),
-    linear-gradient(145deg, #344952, #2b3946);
-  border-color: #9fc6b74a;
+    radial-gradient(ellipse at 0% 0%, #79b6a51c, transparent 75%),
+    #2d3d4980;
+  border-color: #9fc6b730;
 }
 #nomo-site .nv-feature-secondary {
   margin-top: 48px;
-  background: linear-gradient(155deg, #354350, #293642);
+  background: #2d3d4980;
 }
 #nomo-site .nv-feature::before {
   content: "";
@@ -920,7 +917,7 @@
   }
   #nomo-site .nv-local,
   #nomo-site #nv-updates {
-    padding-block: 36px;
+    padding-block: 56px;
   }
 }
 @media (max-width: 560px) {
@@ -941,6 +938,13 @@
   }
   #nomo-site .nv-hero-demo {
     margin-top: 32px;
+  }
+  #nomo-site .nv-hero-demo::before {
+    inset: -48px -30px -24px;
+    filter: blur(16px);
+  }
+  #nomo-site .nv-hero {
+    padding-bottom: 56px;
   }
   #nomo-site .nv-feature {
     padding: 21px;
@@ -1066,8 +1070,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  #nomo-site[data-writer-ready] .n-writing-svg,
-  #nomo-site .nv-demo-controls {
+  #nomo-site[data-writer-ready] .n-writing-svg {
     display: none;
   }
   #nomo-site[data-writer-ready] .n-writing-fallback {

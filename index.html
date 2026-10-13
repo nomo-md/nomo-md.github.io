@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/product-demo.css" />
+    <link rel="stylesheet" href="/playground.css" />
     <title>Nomo | 让 Markdown 更接近写作</title>
     <script type="application/ld+json">
       {
@@ -142,6 +143,7 @@
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path></svg
                 ></a>
+                <a class="nv-link nv-try" href="#nv-playground">亲自试试<span aria-hidden="true">↓</span></a>
               </div>
               <div class="nv-trust-strip">
                 <span>本地文件</span><span>公开源码</span><span>Windows / macOS</span>
@@ -1031,19 +1033,989 @@
                 <span class="n-zoom">100%</span><span class="n-writing-count" data-unit="词">54词</span>
               </div>
             </div>
-            <div class="nv-demo-controls" hidden>
-              <span class="n-stage-label" role="status">文档示例</span>
-              <div class="nv-demo-controls-right" hidden="">
-                <button
-                  class="nv-button nv-button-small n-pause"
-                  type="button"
-                  disabled=""
-                  data-pause-label="暂停"
-                  data-resume-label="继续"
-                  data-complete-label="已完成"
-                >
-                  暂停</button
-                ><button class="nv-button nv-button-small n-replay" type="button" disabled="">重播</button>
+          </div>
+        </section>
+        <section class="nv-section nv-playground" id="nv-playground" aria-labelledby="nv-playground-title">
+          <div class="nv-shell pg-shell">
+            <div class="pg-heading">
+              <div>
+                <div class="nv-eyebrow">不妨亲自试试</div>
+                <h2 id="nv-playground-title">亲手点一点，看看怎么用</h2>
+                <p class="nv-section-lede">切换文件、查看源码，或完成一件小事。</p>
+              </div>
+              <span class="pg-demo-note">交互示例，内容为预设</span>
+            </div>
+            <div
+              class="pg-stage"
+              data-playground=""
+              data-demo-theme="light"
+              data-mode="document"
+              data-sidebar-open="true"
+              data-outline-open="true"
+              role="region"
+              aria-label="Nomo 互动软件样机"
+            >
+              <div class="pg-window">
+                <div class="n-titlebar pg-titlebar">
+                  <button
+                    class="pg-icon-button"
+                    type="button"
+                    disabled=""
+                    data-pg-action="sidebar"
+                    aria-label="显示或隐藏文件侧栏"
+                    title="显示或隐藏文件侧栏"
+                    aria-controls="pg-files"
+                    aria-expanded="true"
+                  >
+                    <svg
+                      class="n-app-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                      <path d="M9 3v18m5-6-3-3 3-3"></path>
+                    </svg></button
+                  ><span class="n-app-name" translate="no">Nomo</span>
+                  <div class="n-titlebar-menu" aria-hidden="true">
+                    <span>文件</span><span>编辑</span><span>段落</span><span>格式</span><span>查看</span
+                    ><span>设置</span>
+                  </div>
+                  <div class="n-titlebar-actions">
+                    <span class="pg-caption-decoration" aria-hidden="true"
+                      ><svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M21 13V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"></path>
+                        <rect x="12" y="12" width="10" height="10" rx="2"></rect></svg></span
+                    ><button
+                      class="pg-icon-button pg-theme-toggle"
+                      type="button"
+                      aria-pressed="false"
+                      aria-label="切换演示为深色主题"
+                      disabled=""
+                      data-pg-action="theme"
+                      title="切换样机为深色主题"
+                    >
+                      <span class="pg-moon"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path></svg></span
+                      ><span class="pg-sun"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <circle cx="12" cy="12" r="4"></circle>
+                          <path
+                            d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+                          ></path></svg
+                      ></span></button
+                    ><span class="n-caption-controls" aria-hidden="true"
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M5 12h14"></path></svg></span
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <rect x="5" y="5" width="14" height="14" rx=".5"></rect></svg></span
+                      ><span
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="m6 6 12 12M6 18 18 6"></path></svg></span
+                    ></span>
+                  </div>
+                </div>
+                <div class="pg-layout">
+                  <aside class="pg-sidebar" id="pg-files" aria-label="示例文件夹">
+                    <div class="pg-folder-title">
+                      <svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m6 9 6 6 6-6"></path></svg
+                      ><svg
+                        class="n-app-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m3 8 3-4h5l2 3h8v13H3Z"></path>
+                        <path d="M3 10h18"></path></svg
+                      ><span>当前文件夹</span>
+                    </div>
+                    <div class="pg-file-list">
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="project"
+                        aria-pressed="true"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>项目笔记.md</span>
+                      </button>
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="plan"
+                        aria-pressed="false"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>工作计划.md</span>
+                      </button>
+                      <button
+                        class="pg-file"
+                        type="button"
+                        data-pg-file="reading"
+                        aria-pressed="false"
+                        disabled=""
+                      >
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span>阅读摘录.md</span>
+                      </button>
+                    </div>
+                  </aside>
+                  <div class="pg-workspace">
+                    <div class="pg-tabs">
+                      <div class="pg-document-tab">
+                        <svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                          <path d="M14 2v6h6M8 13h8M8 17h6"></path></svg
+                        ><span data-pg-filename="">项目笔记.md</span
+                        ><span class="pg-tab-close" aria-hidden="true"
+                          ><svg
+                            class="n-app-icon"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="m6 6 12 12M6 18 18 6"></path></svg
+                        ></span>
+                      </div>
+                      <span class="pg-tab-add" aria-hidden="true"
+                        ><svg
+                          class="n-app-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M12 5v14M5 12h14"></path></svg
+                      ></span>
+                    </div>
+                    <div class="n-toolbar pg-toolbar" aria-label="文档工具栏">
+                      <div class="n-toolbar-core" aria-hidden="true">
+                        <span class="n-app-tool n-tool-0" title="标题"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M4 12h8"></path>
+                            <!---->
+                            <path d="M4 18V6"></path>
+                            <!---->
+                            <path d="M12 18V6"></path>
+                            <!---->
+                            <path d="m17 12 3-2v8"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-1" title="粗体"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-2" title="斜体"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <line x1="19" x2="10" y1="4" y2="4"></line>
+                            <!---->
+                            <line x1="14" x2="5" y1="20" y2="20"></line>
+                            <!---->
+                            <line x1="15" x2="9" y1="4" y2="20"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-3" title="删除线"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M16 4H9a3 3 0 0 0-2.83 4"></path>
+                            <!---->
+                            <path d="M14 12a4 4 0 0 1 0 8H6"></path>
+                            <!---->
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-4" title="下划线"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M6 4v6a6 6 0 0 0 12 0V4"></path>
+                            <!---->
+                            <line x1="4" x2="20" y1="20" y2="20"></line>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-5" title="高亮"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m9 11-6 6v3h9l3-3"></path>
+                            <!---->
+                            <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-6" title="超链接"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <!---->
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <div class="n-toolbar-extra" aria-hidden="true">
+                        <span class="n-app-tool n-tool-0" title="行内注释"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-1" title="引用"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                            ></path>
+                            <!---->
+                            <path
+                              d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-2" title="无序列表"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M3 5h.01"></path>
+                            <!---->
+                            <path d="M3 12h.01"></path>
+                            <!---->
+                            <path d="M3 19h.01"></path>
+                            <!---->
+                            <path d="M8 5h13"></path>
+                            <!---->
+                            <path d="M8 12h13"></path>
+                            <!---->
+                            <path d="M8 19h13"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-3" title="任务列表"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"
+                            ></path>
+                            <!---->
+                            <path d="m9 11 3 3L22 4"></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-4" title="表格"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path
+                              d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"
+                            ></path>
+                            <!----><!---->
+                          </svg></span
+                        ><span class="n-app-tool n-tool-5" title="代码块"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m18 16 4-4-4-4"></path>
+                            <!---->
+                            <path d="m6 8-4 4 4 4"></path>
+                            <!---->
+                            <path d="m14.5 4-5 16"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <div class="n-content-width" aria-hidden="true"><span>60%</span><i></i></div>
+                      <div class="n-mode-switch pg-mode-switch" role="group" aria-label="阅读方式">
+                        <button
+                          class="pg-icon-button"
+                          type="button"
+                          disabled=""
+                          aria-label="文档模式"
+                          title="文档模式"
+                          data-pg-mode="document"
+                          aria-pressed="true"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="M12 7v14"></path>
+                            <!---->
+                            <path d="M16 12h2"></path>
+                            <!---->
+                            <path d="M16 8h2"></path>
+                            <!---->
+                            <path
+                              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+                            ></path>
+                            <!---->
+                            <path d="M6 12h2"></path>
+                            <!---->
+                            <path d="M6 8h2"></path>
+                            <!----><!---->
+                          </svg></button
+                        ><button
+                          class="pg-icon-button"
+                          type="button"
+                          disabled=""
+                          aria-label="源码模式"
+                          title="源码模式"
+                          data-pg-mode="source"
+                          aria-pressed="false"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <path d="m18 16 4-4-4-4"></path>
+                            <!---->
+                            <path d="m6 8-4 4 4 4"></path>
+                            <!---->
+                            <path d="m14.5 4-5 16"></path>
+                            <!----><!---->
+                          </svg></button
+                        ><span class="pg-format-decoration" title="双栏模式" aria-hidden="true"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            class="n-app-icon"
+                            focusable="false"
+                          >
+                            <!---->
+                            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                            <!---->
+                            <path d="M12 3v18"></path>
+                            <!----><!---->
+                          </svg></span
+                        >
+                      </div>
+                      <button
+                        class="pg-icon-button pg-outline-toggle"
+                        type="button"
+                        disabled=""
+                        data-pg-action="outline"
+                        aria-label="显示或隐藏文档大纲"
+                        title="显示或隐藏文档大纲"
+                        aria-controls="pg-outline"
+                        aria-expanded="true"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          class="n-app-icon"
+                          focusable="false"
+                        >
+                          <!---->
+                          <path d="M8 5h13"></path>
+                          <!---->
+                          <path d="M13 12h8"></path>
+                          <!---->
+                          <path d="M13 19h8"></path>
+                          <!---->
+                          <path d="M3 10a2 2 0 0 0 2 2h3"></path>
+                          <!---->
+                          <path d="M3 5v12a2 2 0 0 0 2 2h3"></path>
+                          <!----><!---->
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="pg-body">
+                      <div class="pg-document-scroll" tabindex="0" role="region" aria-label="示例文档内容">
+                        <div class="pg-documents">
+                          <article class="pg-document" data-pg-document="project">
+                            <h3>今天的项目笔记</h3>
+                            <p class="pg-document-intro">把想法写下来，再慢慢整理。</p>
+                            <section>
+                              <h4>先记下想法</h4>
+                              <p>一份笔记不必从完美的结构开始。先记录眼前的问题，再把线索慢慢连起来。</p>
+                              <p>今天先让首页的演示更清楚：既能看见写作过程，也能亲手探索熟悉的界面。</p>
+                            </section>
+                            <section>
+                              <h4>今天要做的事</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" checked="" disabled="" /><span
+                                      >整理已有的想法</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >确认首页的演示内容</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >留一份明天可以继续的笔记</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>进度一览</h4>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">事项</th>
+                                    <th scope="col">负责</th>
+                                    <th scope="col">状态</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>整理文档</td>
+                                    <td>我</td>
+                                    <td>已完成</td>
+                                  </tr>
+                                  <tr>
+                                    <td>首页演示</td>
+                                    <td>我</td>
+                                    <td>进行中</td>
+                                  </tr>
+                                  <tr>
+                                    <td>复查细节</td>
+                                    <td>我</td>
+                                    <td>待开始</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </section>
+                            <section>
+                              <h4>留给明天</h4>
+                              <blockquote><p>先把想法留下来，让下一次开始变得容易。</p></blockquote>
+                              <p>回头再看这份笔记时，补上新的发现，也删掉已经不重要的内容。</p>
+                            </section>
+                          </article>
+                          <article class="pg-document" data-pg-document="plan" hidden="">
+                            <h3>本周工作计划</h3>
+                            <p class="pg-document-intro">把重要的事，留在看得见的地方。</p>
+                            <section>
+                              <h4>本周重点</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" checked="" disabled="" /><span
+                                      >列出本周需要完成的事项</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >完成第一版页面评审</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >整理反馈并安排下一步</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>安排一点专注时间</h4>
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">时间</th>
+                                    <th scope="col">安排</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>周一</td>
+                                    <td>整理需求与资料</td>
+                                  </tr>
+                                  <tr>
+                                    <td>周三</td>
+                                    <td>集中完成页面修改</td>
+                                  </tr>
+                                  <tr>
+                                    <td>周五</td>
+                                    <td>回顾进度、归档记录</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </section>
+                            <section>
+                              <h4>讨论前准备</h4>
+                              <p>
+                                带上清楚的问题和具体的例子。把暂时无法决定的事情写下来，给每一项留下下一步。
+                              </p>
+                              <p>留出一段不安排会议的时间，用来处理需要连续思考的工作。</p>
+                            </section>
+                            <section>
+                              <h4>周末回顾</h4>
+                              <blockquote><p>计划的作用，是帮助自己选择下一件值得做的事。</p></blockquote>
+                              <p>记录完成了什么、遇到了什么阻碍，以及下周想尝试的小变化。</p>
+                            </section>
+                          </article>
+                          <article class="pg-document" data-pg-document="reading" hidden="">
+                            <h3>阅读摘录</h3>
+                            <p class="pg-document-intro">读到一句话，也留下自己的想法。</p>
+                            <section>
+                              <h4>留住这一刻</h4>
+                              <blockquote>
+                                <p>写下来之后，模糊的想法才有了可以继续讨论的形状。</p>
+                              </blockquote>
+                              <p>摘录不必很长。能让自己在下次打开时，想起当时为什么停下来，就已经足够。</p>
+                            </section>
+                            <section>
+                              <h4>我的理解</h4>
+                              <p>
+                                笔记既是记录，也是重新组织想法的过程。先用自己的话说一遍，再看看还有什么没有想清楚。
+                              </p>
+                              <ul>
+                                <li>一句话概括这次阅读的收获</li>
+                                <li>用一个具体的例子解释它</li>
+                                <li>留下仍然想继续追问的问题</li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>接下来试试</h4>
+                              <ul class="pg-tasks">
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >写下一段自己的理解</span
+                                    ></label
+                                  >
+                                </li>
+                                <li>
+                                  <label
+                                    ><input type="checkbox" disabled="" /><span
+                                      >把这个想法用在下一份笔记里</span
+                                    ></label
+                                  >
+                                </li>
+                              </ul>
+                            </section>
+                            <section>
+                              <h4>给未来的自己</h4>
+                              <p>
+                                不需要把每一页都记下来。留下那些让你改变看法、产生疑问，或者想立即动手试一试的内容。
+                              </p>
+                            </section>
+                          </article>
+                        </div>
+                        <pre class="pg-source" hidden=""><code></code></pre>
+                      </div>
+                      <nav class="pg-outline" id="pg-outline" aria-label="大纲">
+                        <div class="pg-outline-title">文档大纲</div>
+                        <div data-pg-outline-items=""></div>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                <div class="pg-statusbar">
+                  <span class="pg-zoom">100%</span><span data-pg-count=""></span>
+                </div>
+              </div>
+              <div class="pg-caption">
+                <span>示例内容，可切换文件或勾选待办。</span
+                ><span class="pg-live" data-pg-status="" role="status" aria-live="polite"></span
+                ><button class="pg-reset" type="button" data-pg-action="reset" disabled="">
+                  <svg
+                    class="n-app-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 10a9 9 0 1 1 2.6 8.4M3 4v6h6"></path></svg
+                  ><span>重置示例</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1762,5 +2734,6 @@
       </footer>
     </div>
     <script src="/script.js" defer=""></script>
+    <script src="/playground.js" defer=""></script>
   </body>
 </html>
