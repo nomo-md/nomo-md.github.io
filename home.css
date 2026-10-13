@@ -1,5 +1,5 @@
 #nomo-site {
-  --n-page: #26303d;
+  --n-page: var(--page);
   --n-surface: #2d3947;
   --n-editor: #303c4b;
   --n-chrome: #293441;
@@ -13,12 +13,12 @@
   --n-glow: #a0b6d51c;
   --n-shadow: #1320313d;
   --nv-pad: clamp(20px, 6vw, 64px);
-  --nv-title-max: 56px;
   width: 100%;
   color-scheme: dark;
   background:
-    radial-gradient(ellipse at 14% 0%, #617c9824, transparent 40%),
-    radial-gradient(ellipse at 100% 58%, #35587a20, transparent 44%),
+    radial-gradient(ellipse 900px 720px at 0% 0%, var(--atmosphere-cool), transparent 72%),
+    radial-gradient(ellipse 760px 560px at 100% 12%, var(--atmosphere-warm), transparent 76%),
+    radial-gradient(ellipse 950px 700px at 10% 65%, #3f718328, transparent 75%),
     var(--n-page);
   color: var(--n-text);
   font-family: var(--font-site);
@@ -44,7 +44,7 @@
   outline-offset: 4px;
 }
 #nomo-site [id] {
-  scroll-margin-top: 24px;
+  scroll-margin-top: 88px;
 }
 #nomo-site h1,
 #nomo-site h2,
@@ -58,18 +58,10 @@
 #nomo-site h3,
 #nomo-site h4,
 #nomo-site strong {
-  font-weight: 500;
+  font-weight: 600;
 }
 #nomo-site .nv-shell {
   padding-inline: var(--nv-pad);
-}
-#nomo-site .nv-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 22px;
-  padding-block: 23px;
-  border-bottom: 1px solid #ffffff09;
 }
 #nomo-site .nv-wordmark {
   font-size: 21px;
@@ -79,36 +71,22 @@
   font-weight: 550;
   letter-spacing: -0.65px;
 }
-#nomo-site .nv-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 23px;
-  margin-left: auto;
-  font-size: 13px;
-  color: var(--n-muted);
-}
-#nomo-site .nv-nav-links a:hover,
 #nomo-site .nv-link:hover,
 #nomo-site .nv-footer a:hover {
   color: var(--n-text);
-}
-#nomo-site .nv-nav-action {
-  display: flex;
-  align-items: center;
-  gap: 18px;
 }
 #nomo-site .nv-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 9px;
-  min-height: 43px;
-  padding: 9px 17px;
+  min-height: 46px;
+  padding: 10px 20px;
   border-radius: 7px;
   border: 1px solid var(--n-border);
   background: var(--n-surface);
   color: var(--n-text);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   transition:
     background-color 180ms,
@@ -154,14 +132,14 @@
   font-size: 13px;
 }
 #nomo-site .nv-hero {
-  padding-top: 55px;
-  padding-bottom: 61px;
+  padding-top: clamp(64px, 6.5vw, 96px);
+  padding-bottom: clamp(80px, 8vw, 116px);
   position: relative;
 }
 #nomo-site .nv-hero-intro {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 44px;
   align-items: end;
 }
 #nomo-site .nv-hero-meta {
@@ -186,13 +164,13 @@
   background: #b8c6d9;
 }
 #nomo-site .nv-hero h1 {
-  font-size: clamp(32px, 6vw, var(--nv-title-max));
-  line-height: 1.16;
+  font-size: var(--type-display);
+  line-height: 1.12;
   letter-spacing: -1.6px;
   text-wrap: balance;
 }
 #nomo-site .nv-hero h1 .nv-title-soft {
-  color: #b8c0cc;
+  color: #bad4cd;
 }
 #nomo-site .nv-lede {
   max-width: 560px;
@@ -215,14 +193,14 @@
   flex-wrap: wrap;
   margin-top: 21px;
   color: var(--n-muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 #nomo-site .nv-trust-strip span + span {
   border-left: 1px solid var(--n-border);
   padding-left: 14px;
 }
 #nomo-site .nv-hero-demo {
-  margin-top: 40px;
+  margin-top: 56px;
   padding: 7px 0 0;
   perspective: 1600px;
   position: relative;
@@ -230,9 +208,9 @@
 #nomo-site .nv-hero-demo::before {
   content: "";
   position: absolute;
-  inset: -25px -15px 0;
+  inset: -36px -15px -24px;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 40%, #8296b510, transparent 70%);
+  background: radial-gradient(ellipse at 50% 40%, #90b8ad24, transparent 70%);
 }
 #nomo-site .n-window {
   --rx: 0deg;
@@ -434,17 +412,17 @@
   gap: 7px;
 }
 #nomo-site .nv-section {
-  padding-block: 68px;
-  border-top: 1px solid #ffffff0b;
+  padding-block: clamp(64px, 7vw, 96px);
+  border-top: 0;
 }
 #nomo-site .nv-eyebrow {
-  color: #aab6c6;
+  color: #bad4cd;
   font-size: 12px;
   margin-bottom: 12px;
 }
 #nomo-site .nv-section h2 {
-  font-size: clamp(25px, 4vw, 34px);
-  line-height: 1.35;
+  font-size: var(--type-section);
+  line-height: 1.2;
   letter-spacing: -0.85px;
   text-wrap: balance;
 }
@@ -452,24 +430,39 @@
   max-width: 500px;
   margin-top: 15px;
   color: var(--n-muted);
-  font-size: 14px;
+  font-size: 15px;
+}
+#nomo-site #nv-features {
+  padding-top: 0;
+  padding-bottom: clamp(72px, 8vw, 112px);
 }
 #nomo-site .nv-feature-grid {
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  gap: 16px;
-  margin-top: 32px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 40px;
 }
 #nomo-site .nv-feature {
   --spot-x: 50%;
   --spot-y: 50%;
   --spot-alpha: 0;
-  padding: 25px;
-  background: #2c3745;
-  border: 1px solid var(--n-border);
-  border-radius: 10px;
+  padding: clamp(24px, 3vw, 36px);
+  background: #2b3845;
+  border: 1px solid #afbdcc30;
+  border-radius: 16px;
   position: relative;
   min-width: 0;
+}
+#nomo-site .nv-feature-primary {
+  background:
+    radial-gradient(ellipse at 0% 0%, #86b1a633, transparent 75%),
+    linear-gradient(145deg, #344952, #2b3946);
+  border-color: #9fc6b74a;
+}
+#nomo-site .nv-feature-secondary {
+  margin-top: 48px;
+  background: linear-gradient(155deg, #354350, #293642);
 }
 #nomo-site .nv-feature::before {
   content: "";
@@ -487,19 +480,19 @@
 }
 #nomo-site .nv-feature h3 {
   margin-top: 9px;
-  font-size: 20px;
-  line-height: 1.45;
+  font-size: var(--type-card);
+  line-height: 1.3;
   letter-spacing: -0.4px;
 }
 #nomo-site .nv-feature > p {
   margin-top: 11px;
   color: var(--n-muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 #nomo-site .nv-feature-label {
-  color: #b4bfcd;
-  font-size: 11px;
+  color: #bad4cd;
+  font-size: 12px;
 }
 #nomo-site .nv-mode-demo {
   margin-top: 24px;
@@ -534,8 +527,8 @@
   color: var(--n-text);
 }
 #nomo-site .nv-mode-body {
-  padding: 18px;
-  min-height: 178px;
+  padding: 24px;
+  min-height: 216px;
 }
 #nomo-site .nv-mode-body h4 {
   font-size: 17px;
@@ -618,9 +611,13 @@
 }
 #nomo-site .nv-focus-layout {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 38px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(36px, 6vw, 80px);
   align-items: center;
+}
+#nomo-site #nv-focus {
+  padding-top: 0;
+  padding-bottom: clamp(64px, 7vw, 96px);
 }
 #nomo-site .nv-focus-copy .nv-button {
   margin-top: 22px;
@@ -708,24 +705,41 @@
   font-size: 11px;
 }
 #nomo-site .nv-local {
-  background: #2a3543;
+  width: min(calc(100% - 32px), 1248px);
+  padding-block: 44px;
+  border: 1px solid #afbdcc26;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 90% 50%, #a58e7420, transparent 65%),
+    linear-gradient(110deg, #293a43, #2c3846);
+}
+#nomo-site .nv-local h2 {
+  font-size: clamp(26px, 2.6vw, 34px);
 }
 #nomo-site .nv-local-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 35px;
+  gap: 64px;
   align-items: center;
 }
 #nomo-site .nv-local-facts {
   display: grid;
-  gap: 16px;
+  gap: 18px;
+  padding-left: 28px;
+  border-left: 1px solid #afbdcc30;
 }
 #nomo-site .nv-local-fact {
   display: flex;
   align-items: center;
   gap: 13px;
   color: var(--n-body);
-  font-size: 13px;
+  font-size: 14px;
+}
+#nomo-site #nv-updates {
+  padding-block: 48px 64px;
+}
+#nomo-site #nv-updates h2 {
+  font-size: clamp(26px, 2.6vw, 34px);
 }
 #nomo-site .nv-local-fact .nv-icon {
   width: 18px;
@@ -742,20 +756,20 @@
 #nomo-site .nv-update-items {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 23px;
-  margin-top: 30px;
+  gap: 32px;
+  margin-top: 24px;
 }
 #nomo-site .nv-update {
   border-top: 1px solid var(--n-border);
   padding-top: 16px;
 }
 #nomo-site .nv-update h3 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   letter-spacing: 0;
 }
 #nomo-site .nv-update p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.9;
   color: var(--n-muted);
   margin-top: 7px;
@@ -766,7 +780,19 @@
   margin-top: 12px;
 }
 #nomo-site .nv-download {
-  background: linear-gradient(180deg, #2b3747, #273241);
+  width: min(calc(100% - 32px), 1248px);
+  padding-block: clamp(56px, 6vw, 80px);
+  margin-bottom: 32px;
+  border: 1px solid #b4c7bd40;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 0% 0%, #91ba9d38, transparent 60%),
+    radial-gradient(ellipse at 100% 100%, #bea18335, transparent 65%),
+    linear-gradient(125deg, #3b5157, #344552 55%, #414952);
+}
+#nomo-site .nv-download h2 {
+  font-size: var(--type-display);
+  line-height: 1.12;
 }
 #nomo-site .nv-download-intro {
   display: flex;
@@ -782,17 +808,17 @@
 #nomo-site .nv-download-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 30px;
+  gap: 24px;
+  margin-top: 40px;
 }
 #nomo-site .nv-download-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 24px;
-  background: #313e4e;
-  border: 1px solid var(--n-border);
-  border-radius: 9px;
+  padding: 28px;
+  background: #1c2c3673;
+  border: 1px solid #cad6e53d;
+  border-radius: 12px;
 }
 #nomo-site .nv-platform-title {
   display: flex;
@@ -805,7 +831,7 @@
   color: #c3cddb;
 }
 #nomo-site .nv-platform-title h3 {
-  font-size: 19px;
+  font-size: 23px;
 }
 #nomo-site .nv-platform-info {
   margin: 9px 0 23px;
@@ -863,6 +889,9 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  #nomo-site .nv-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (max-width: 700px) {
   #nomo-site .nv-feature-grid,
@@ -873,23 +902,28 @@
   #nomo-site .nv-focus-layout {
     gap: 25px;
   }
-  #nomo-site .nv-nav-links {
-    gap: 17px;
-  }
   #nomo-site .nv-hero {
     padding-top: 48px;
   }
   #nomo-site .nv-section {
-    padding-block: 50px;
+    padding-block: 56px;
+  }
+  #nomo-site .nv-feature-secondary {
+    margin-top: 0;
+  }
+  #nomo-site .nv-local-layout {
+    gap: 28px;
+  }
+  #nomo-site .nv-local-facts {
+    padding-left: 0;
+    border-left: 0;
+  }
+  #nomo-site .nv-local,
+  #nomo-site #nv-updates {
+    padding-block: 36px;
   }
 }
 @media (max-width: 560px) {
-  #nomo-site .nv-nav-links {
-    display: none;
-  }
-  #nomo-site .nv-nav {
-    gap: 12px;
-  }
   #nomo-site .nv-app-layout {
     grid-template-columns: 1fr;
   }
@@ -958,14 +992,6 @@
 #nomo-site button:disabled {
   cursor: default;
 }
-#nomo-site .nv-language {
-  font-size: 12px;
-  color: var(--n-muted);
-  padding-block: 9px;
-}
-#nomo-site .nv-language:hover {
-  color: var(--n-text);
-}
 #nomo-site .nv-watch {
   min-height: 43px;
 }
@@ -1028,7 +1054,6 @@
   }
 }
 @media (pointer: coarse) {
-  #nomo-site .nv-language,
   #nomo-site .nv-package-secondary,
   #nomo-site .nv-download-help a,
   #nomo-site .nv-footer-links a {
@@ -1060,7 +1085,7 @@
 
 #nomo-site:lang(zh-CN) .nv-hero h1 {
   letter-spacing: -0.02em;
-  font-weight: 550;
+  font-weight: 600;
 }
 #nomo-site .nv-wordmark img {
   border-radius: 8px;

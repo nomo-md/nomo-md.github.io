@@ -28,19 +28,19 @@
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="/en/" aria-label="Nomo home">
-          <img src="/assets/nomo-logo.png" width="42" height="42" alt="" />
+          <img src="/assets/nomo-logo.png" width="32" height="32" alt="" />
           <span translate="no">Nomo</span>
         </a>
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav class="nav-links" id="site-navigation" aria-label="Main navigation">
           <a href="/en/">Product</a>
-          <a href="/en/download/" aria-current="page">Download</a>
+          <a href="/en/#nv-features">Features</a>
           <a href="/releases/">Release notes</a>
+          <a href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer noopener">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
         <div class="nav-actions">
-          <a class="language-link" href="/download/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">
-            中文
-          </a>
-          <a class="button button-small" href="/releases/">View release notes</a>
+          <a class="language-link" href="/download/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+          <a class="button button-small nav-download" href="/en/download/" aria-label="Download Nomo" aria-current="page"><span class="nav-label-long">Download Nomo</span><span class="nav-label-short">Download</span></a>
+          <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation" hidden><span></span><span></span></button>
         </div>
       </div>
     </header>
@@ -63,7 +63,6 @@
         <div class="platform-list">
           <section class="platform-download reveal" aria-labelledby="windows-title">
             <header class="platform-heading">
-              <span class="platform-index">01</span>
               <div>
                 <h2 id="windows-title">Windows</h2>
                 <p>Windows 10 / 11 · x64</p>
@@ -96,7 +95,6 @@
 
           <section class="platform-download reveal" aria-labelledby="macos-title">
             <header class="platform-heading">
-              <span class="platform-index">02</span>
               <div>
                 <h2 id="macos-title">macOS</h2>
                 <p>macOS 12+ · Apple Silicon (arm64)</p>

@@ -58,20 +58,26 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <div id="nomo-site" data-product-theme="light">
-      <header class="nv-shell nv-nav" id="nv-top">
-        <a class="nv-wordmark" href="#nv-top" aria-label="Nomo home"
-          ><img src="/assets/nomo-logo.png" width="28" height="28" alt="" />Nomo</a
-        >
-        <nav class="nv-nav-links" aria-label="Main navigation">
-          <a href="#nv-writing">Writing</a><a href="#nv-features">Features</a
-          ><a href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer noopener">GitHub</a>
+    <header class="site-header" id="nv-top">
+      <div class="nav-shell">
+        <a class="brand" href="/en/" aria-label="Nomo home">
+          <img src="/assets/nomo-logo.png" width="32" height="32" alt="" />
+          <span translate="no">Nomo</span>
+        </a>
+        <nav class="nav-links" id="site-navigation" aria-label="Main navigation">
+          <a href="/en/" aria-current="page">Product</a>
+          <a href="/en/#nv-features">Features</a>
+          <a href="/releases/">Release notes</a>
+          <a href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer noopener">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
-        <div class="nv-nav-action">
-          <a class="nv-language" href="/" lang="zh-CN" hreflang="zh-CN" aria-label="切换到中文">中文</a
-          ><a class="nv-button nv-button-small" href="#nv-download">Download Nomo</a>
+        <div class="nav-actions">
+          <a class="language-link" href="/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+          <a class="button button-small nav-download" href="/en/download/" aria-label="Download Nomo"><span class="nav-label-long">Download Nomo</span><span class="nav-label-short">Download</span></a>
+          <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation" hidden><span></span><span></span></button>
         </div>
-      </header>
+      </div>
+    </header>
+    <div id="nomo-site" data-product-theme="light">
       <main id="main" tabindex="-1">
         <section class="nv-shell nv-hero" aria-labelledby="nv-hero-title">
           <div class="nv-hero-intro">
@@ -1029,7 +1035,7 @@
                 ><span class="n-writing-count" data-unit=" words">25 words</span>
               </div>
             </div>
-            <div class="nv-demo-controls">
+            <div class="nv-demo-controls" hidden>
               <span class="n-stage-label" role="status">Document preview</span>
               <div class="nv-demo-controls-right" hidden="">
                 <button
@@ -1051,7 +1057,7 @@
           <h2 id="nv-features-title">Fewer interruptions. More writing.</h2>
           <p class="nv-section-lede">Keep familiar tools close and long documents easy to navigate.</p>
           <div class="nv-feature-grid">
-            <article class="nv-feature" data-spotlight="">
+            <article class="nv-feature nv-feature-primary" data-spotlight="">
               <div class="nv-feature-label">Document editing</div>
               <h3>Write as the ideas come.</h3>
               <p>
@@ -1199,7 +1205,7 @@
                 </div>
               </div>
             </article>
-            <article class="nv-feature" data-spotlight="">
+            <article class="nv-feature nv-feature-secondary" data-spotlight="">
               <div class="nv-feature-label">Document structure</div>
               <h3>Find your way through longer drafts.</h3>
               <p>

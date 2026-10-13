@@ -1,5 +1,38 @@
 document.documentElement.classList.add('js');
 
+setupSiteNavigation();
+
+function setupSiteNavigation() {
+  const header = document.querySelector('.site-header');
+  const toggle = header?.querySelector('.nav-toggle');
+  const navigation = header?.querySelector('.nav-links');
+  if (!toggle || !navigation) return;
+
+  const compact = window.matchMedia('(max-width: 900px)');
+  const setOpen = (open, restoreFocus = false) => {
+    navigation.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
+    if (restoreFocus) toggle.focus();
+  };
+
+  // Keep all navigation links available if JavaScript cannot initialize the compact menu.
+  toggle.hidden = false;
+  header.classList.add('has-menu');
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  navigation.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('click', (event) => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true') return;
+    setOpen(false, true);
+  });
+  compact.addEventListener('change', () => setOpen(false));
+}
+
 const revealItems = document.querySelectorAll('.reveal');
 
 if ('IntersectionObserver' in window) {
@@ -188,6 +221,7 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
     : ['写入标题', '写下正文', '整理列表', '快捷插入表格', '填写表格', '文档已成形'];
 
   const total = 15800;
+  const cycleDuration = total + 2000;
   const canvas = document.createElement('canvas').getContext('2d');
   let time = total;
   let paused = false;
@@ -415,14 +449,15 @@ function setupWritingDemo(root, reducedMotion, finePointer) {
   }
 
   function tick(now) {
-    time = Math.min(total, now - anchor);
+    // 完成后停留两秒再从头播放；离屏或页面隐藏时由 run 暂停计时。
+    time = (now - anchor) % cycleDuration;
     render();
-    if (time < total && !paused) frame = requestAnimationFrame(tick);
+    if (!paused) frame = requestAnimationFrame(tick);
   }
   function run() {
     cancelAnimationFrame(frame);
     anchor = performance.now() - time;
-    if (inView && !document.hidden && !paused && time < total && !reducedMotion.matches)
+    if (inView && !document.hidden && !paused && !reducedMotion.matches)
       frame = requestAnimationFrame(tick);
   }
   function replay() {

@@ -58,20 +58,26 @@
   </head>
   <body>
     <a class="skip-link" href="#main">跳到主要内容</a>
-    <div id="nomo-site" data-product-theme="light">
-      <header class="nv-shell nv-nav" id="nv-top">
-        <a class="nv-wordmark" href="#nv-top" aria-label="Nomo 首页"
-          ><img src="/assets/nomo-logo.png" width="28" height="28" alt="" />Nomo</a
-        >
-        <nav class="nv-nav-links" aria-label="主导航">
-          <a href="#nv-writing">写作体验</a><a href="#nv-features">功能</a
-          ><a href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer noopener">GitHub</a>
+    <header class="site-header" id="nv-top">
+      <div class="nav-shell">
+        <a class="brand" href="/" aria-label="Nomo 首页">
+          <img src="/assets/nomo-logo.png" width="32" height="32" alt="" />
+          <span translate="no">Nomo</span>
+        </a>
+        <nav class="nav-links" id="site-navigation" aria-label="主导航">
+          <a href="/" aria-current="page">产品</a>
+          <a href="/#nv-features">功能</a>
+          <a href="/releases/">版本说明</a>
+          <a href="https://github.com/nomo-md/nomo" target="_blank" rel="noreferrer noopener">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
-        <div class="nv-nav-action">
-          <a class="nv-language" href="/en/" lang="en" hreflang="en" aria-label="Read in English">EN</a
-          ><a class="nv-button nv-button-small" href="#nv-download">下载 Nomo</a>
+        <div class="nav-actions">
+          <a class="language-link" href="/en/" lang="en" hreflang="en" aria-label="Read in English">EN</a>
+          <a class="button button-small nav-download" href="/download/" aria-label="下载 Nomo"><span class="nav-label-long">下载 Nomo</span><span class="nav-label-short">下载</span></a>
+          <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开导航" data-open-label="打开导航" data-close-label="收起导航" hidden><span></span><span></span></button>
         </div>
-      </header>
+      </div>
+    </header>
+    <div id="nomo-site" data-product-theme="light">
       <main id="main" tabindex="-1">
         <section class="nv-shell nv-hero" aria-labelledby="nv-hero-title">
           <div class="nv-hero-intro">
@@ -1025,7 +1031,7 @@
                 <span class="n-zoom">100%</span><span class="n-writing-count" data-unit="词">54词</span>
               </div>
             </div>
-            <div class="nv-demo-controls">
+            <div class="nv-demo-controls" hidden>
               <span class="n-stage-label" role="status">文档示例</span>
               <div class="nv-demo-controls-right" hidden="">
                 <button
@@ -1047,7 +1053,7 @@
           <h2 id="nv-features-title">每次写作，少一点打断。</h2>
           <p class="nv-section-lede">常用工具就在手边，长文档也能从容整理。</p>
           <div class="nv-feature-grid">
-            <article class="nv-feature" data-spotlight="">
+            <article class="nv-feature nv-feature-primary" data-spotlight="">
               <div class="nv-feature-label">直觉编辑</div>
               <h3>想到什么，直接写下来。</h3>
               <p>标题、列表、表格、代码和公式，在编辑中直接呈现。需要核对时，随时回到源码。</p>
@@ -1192,7 +1198,7 @@
                 </div>
               </div>
             </article>
-            <article class="nv-feature" data-spotlight="">
+            <article class="nv-feature nv-feature-secondary" data-spotlight="">
               <div class="nv-feature-label">长文组织</div>
               <h3>内容变长，方向依然清楚。</h3>
               <p>按标题浏览文档、折叠章节，也能整节重排。文件树键入定位，让要找的文件更快出现。</p>
