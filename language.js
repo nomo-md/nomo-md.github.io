@@ -57,7 +57,8 @@
       if (target.origin !== url.origin) return;
       target.search = url.search;
       target.searchParams.set('lang', targetLanguage);
-      target.hash = url.hash || target.hash;
+      // 手动切换打开对应页面顶部，避免旧锚点把用户带回下载区。
+      target.hash = '';
       link.href = target.href;
       link.addEventListener('click', () => savePreference(targetLanguage));
     });
