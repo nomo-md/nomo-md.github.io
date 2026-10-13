@@ -317,6 +317,7 @@ async function main() {
     cp(path.join(projectRoot, 'home.css'), path.join(outputRoot, 'home.css')),
     cp(path.join(projectRoot, 'fonts.css'), path.join(outputRoot, 'fonts.css')),
     cp(path.join(projectRoot, 'product-demo.css'), path.join(outputRoot, 'product-demo.css')),
+    cp(path.join(projectRoot, 'language.js'), path.join(outputRoot, 'language.js')),
     cp(path.join(projectRoot, 'script.js'), path.join(outputRoot, 'script.js')),
     cp(path.join(projectRoot, 'robots.txt'), path.join(outputRoot, 'robots.txt')),
     cp(path.join(projectRoot, 'sitemap.xml'), path.join(outputRoot, 'sitemap.xml')),
