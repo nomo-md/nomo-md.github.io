@@ -164,28 +164,72 @@ if (homepage) {
     replayWriting();
   });
 
-  homepage.querySelectorAll('[data-spotlight]').forEach((panel) => {
-    let bounds = null;
-    panel.addEventListener('pointerenter', () => {
-      bounds = panel.getBoundingClientRect();
-    });
-    panel.addEventListener('pointermove', (event) => {
-      if (!bounds || !finePointer.matches || reducedMotion.matches) return;
-      const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
-      const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
-      panel.style.setProperty('--spot-x', `${x * 100}%`);
-      panel.style.setProperty('--spot-y', `${y * 100}%`);
-      panel.style.setProperty('--spot-alpha', '1');
-    });
-    const clear = () => {
-      bounds = null;
-      panel.style.setProperty('--spot-alpha', '0');
-    };
-    panel.addEventListener('pointerleave', clear);
-    reducedMotion.addEventListener('change', clear);
-    window.addEventListener('resize', clear, { passive: true });
-    window.addEventListener('scroll', clear, { passive: true });
+  let disposeSpotlights = setupCardSpotlights(homepage, reducedMotion, finePointer);
+  window.addEventListener('pagehide', () => disposeSpotlights());
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) disposeSpotlights = setupCardSpotlights(homepage, reducedMotion, finePointer);
   });
+}
+
+function setupCardSpotlights(root, reducedMotion, finePointer) {
+  const controller = new AbortController();
+  const { signal } = controller;
+  let active = null;
+  let frame = 0;
+  let clientX = 0;
+  let clientY = 0;
+
+  function clear() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    if (active) {
+      active.style.removeProperty('--spot-alpha');
+      // Fade at the last pointer position instead of jumping back to the centre.
+      active = null;
+    }
+  }
+
+  root.addEventListener('pointermove', (event) => {
+    if (!finePointer.matches || reducedMotion.matches || document.hidden ||
+        root.dataset.cardMotion === 'off' || event.pointerType === 'touch') return;
+    const panel = event.target.closest('[data-spotlight]');
+    if (panel !== active) {
+      clear();
+      active = panel;
+    }
+    if (!active) return;
+    clientX = event.clientX;
+    clientY = event.clientY;
+    if (frame) return;
+    // Read current bounds once per frame: scrolling and entrances can move the card.
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const bounds = active.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (clientX - bounds.left) / bounds.width));
+      const y = Math.max(0, Math.min(1, (clientY - bounds.top) / bounds.height));
+      active.style.setProperty('--spot-x', `${(x * 100).toFixed(2)}%`);
+      active.style.setProperty('--spot-y', `${(y * 100).toFixed(2)}%`);
+      active.style.setProperty('--spot-alpha', '1');
+    });
+  }, { signal, passive: true });
+  root.addEventListener('pointerout', (event) => {
+    if (active && !active.contains(event.relatedTarget)) clear();
+  }, { signal });
+  root.addEventListener('pointercancel', clear, { signal });
+  root.addEventListener('nomo:motion', (event) => {
+    root.dataset.cardMotion = event.detail.paused ? 'off' : 'on';
+    clear();
+  }, { signal });
+  reducedMotion.addEventListener('change', clear, { signal });
+  finePointer.addEventListener('change', clear, { signal });
+  window.addEventListener('scroll', clear, { signal, passive: true, capture: true });
+  window.addEventListener('resize', clear, { signal, passive: true });
+  window.addEventListener('blur', clear, { signal });
+  document.addEventListener('visibilitychange', clear, { signal });
+  return () => {
+    clear();
+    controller.abort();
+  };
 }
 
 function setupWritingDemo(root, reducedMotion, finePointer) {

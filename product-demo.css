@@ -552,8 +552,8 @@
   border-color: var(--app-border);
 }
 #nomo-site .nv-focus-desktop {
-  background-color: #344252;
-  background-image: radial-gradient(#a6b6c626 0.7px, transparent 0.7px);
+  background-color: #243644;
+  background-image: radial-gradient(#a6b6c61c 0.7px, transparent 0.7px);
   min-height: 310px;
 }
 #nomo-site .nv-small-app {

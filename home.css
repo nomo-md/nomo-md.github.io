@@ -1,5 +1,5 @@
 #nomo-site {
-  --n-page: var(--page);
+  --n-page: #172330;
   --n-surface: #2d3d49;
   --n-editor: #303c4b;
   --n-chrome: #293441;
@@ -14,14 +14,19 @@
   --n-shadow: #1320313d;
   --n-light: #79b6a5;
   --n-rim: #a8b9cc;
+  --n-light-rgb: 112 210 198;
+  --n-blue-rgb: 113 163 225;
   --nv-pad: clamp(20px, 6vw, 64px);
   width: 100%;
   overflow-x: clip;
   color-scheme: dark;
+  /* Page-height lighting also reaches the gutters and space between sections. */
   background:
-    radial-gradient(ellipse 1000px 800px at 0% 0%, #79b6a529, transparent 72%),
-    radial-gradient(ellipse 800px 900px at 100% 18%, #a8b9cc12, transparent 76%),
-    radial-gradient(ellipse 950px 700px at 10% 65%, #79b6a512, transparent 75%),
+    radial-gradient(ellipse 1000px 850px at -4% 4%, rgb(var(--n-light-rgb) / 25%), transparent 76%),
+    radial-gradient(ellipse 1100px 1000px at 108% 26%, rgb(var(--n-blue-rgb) / 25%), transparent 78%),
+    radial-gradient(ellipse 1000px 1050px at -8% 49%, rgb(var(--n-light-rgb) / 22%), transparent 78%),
+    radial-gradient(ellipse 1100px 1000px at 108% 73%, rgb(var(--n-blue-rgb) / 24%), transparent 78%),
+    radial-gradient(ellipse 1000px 700px at 12% 100%, rgb(var(--n-light-rgb) / 18%), transparent 78%),
     var(--n-page);
   color: var(--n-text);
   font-family: var(--font-site);
@@ -212,17 +217,23 @@
 #nomo-site .nv-hero-demo::before {
   content: "";
   position: absolute;
-  inset: -100px -110px -40px;
+  inset: -64px -80px -56px;
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(ellipse 30% 54% at 8% 44%, #79b6a552, transparent 78%),
-    radial-gradient(ellipse 32% 58% at 94% 66%, #a8b9cc38, transparent 78%),
-    radial-gradient(ellipse 62% 22% at 50% 83%, #79b6a54a, transparent 80%);
-  filter: blur(24px);
+    radial-gradient(ellipse 56% 48% at 18% 22%, rgb(var(--n-light-rgb) / 28%), transparent 74%),
+    radial-gradient(ellipse 42% 62% at 96% 64%, rgb(var(--n-blue-rgb) / 22%), transparent 76%);
+}
+#nomo-site .nv-hero-demo::before,
+#nomo-site .pg-stage::before {
+  /* Fade both axes so the halo never exposes its rectangular paint boundary. */
+  mask-image:
+    linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+    linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-composite: intersect;
 }
 #nomo-site .nv-hero-demo > .n-window {
-  border-color: #a8b9cc99;
+  border-color: #c2e2e080;
   box-shadow:
     0 0 0 1px #a8b9cc1c,
     0 2px 5px #101c2640,
@@ -441,11 +452,8 @@
   margin-top: 40px;
 }
 #nomo-site .nv-feature {
-  --spot-x: 50%;
-  --spot-y: 50%;
-  --spot-alpha: 0;
   padding: clamp(24px, 3vw, 36px);
-  background: #2d3d4980;
+  background: linear-gradient(145deg, #263b47, #20303e 72%);
   border: 1px solid #afbdcc20;
   border-radius: 16px;
   position: relative;
@@ -453,27 +461,69 @@
 }
 #nomo-site .nv-feature-primary {
   background:
-    radial-gradient(ellipse at 0% 0%, #79b6a51c, transparent 75%),
-    #2d3d4980;
+    radial-gradient(ellipse at 0% 0%, rgb(var(--n-light-rgb) / 7%), transparent 65%),
+    linear-gradient(145deg, #263b47, #20303e 72%);
   border-color: #9fc6b730;
 }
 #nomo-site .nv-feature-secondary {
   margin-top: 48px;
-  background: #2d3d4980;
 }
-#nomo-site .nv-feature::before {
+#nomo-site [data-spotlight] {
+  --spot-x: 50%;
+  --spot-y: 40%;
+  --spot-alpha: 0;
+  position: relative;
+  isolation: isolate;
+  transition: translate 650ms cubic-bezier(.22, .68, .25, 1),
+    border-color 450ms, box-shadow 650ms;
+}
+#nomo-site [data-spotlight]::before,
+#nomo-site [data-spotlight]::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(
-    170px circle at var(--spot-x) var(--spot-y),
-    #9badc71d,
-    transparent 85%
-  );
+  z-index: -1;
   opacity: var(--spot-alpha);
-  transition: opacity 250ms;
+  transition: opacity 500ms;
+}
+#nomo-site [data-spotlight]::before {
+  background: radial-gradient(
+    320px circle at var(--spot-x) var(--spot-y),
+    rgb(var(--n-light-rgb) / 13%),
+    transparent 70%
+  );
+}
+#nomo-site [data-spotlight]::after {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(
+    240px circle at var(--spot-x) var(--spot-y),
+    rgb(var(--n-light-rgb) / 80%), transparent 75%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+#nomo-site [data-spotlight]:focus-within {
+  border-color: rgb(var(--n-light-rgb) / 48%);
+}
+#nomo-site [data-spotlight]:focus-within::before {
+  opacity: .7;
+}
+@media (hover: hover) and (pointer: fine) {
+  #nomo-site [data-spotlight]:hover {
+    border-color: rgb(var(--n-light-rgb) / 42%);
+    box-shadow: 0 26px 46px -24px #06121ecc, 0 1px 0 #d5fff00a inset;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Compose with GSAP's transform, overriding its inline translate: none reset. */
+  #nomo-site:not([data-card-motion="off"]) [data-spotlight]:hover {
+    translate: 0 -8px !important;
+  }
 }
 #nomo-site .nv-feature h3 {
   margin-top: 9px;
@@ -707,8 +757,8 @@
   border: 1px solid #afbdcc26;
   border-radius: 24px;
   background:
-    radial-gradient(ellipse at 90% 50%, #a58e7420, transparent 65%),
-    linear-gradient(110deg, #293a43, #2c3846);
+    radial-gradient(ellipse at 100% 0%, rgb(var(--n-blue-rgb) / 9%), transparent 65%),
+    linear-gradient(110deg, #22343e, #202e3c);
 }
 #nomo-site .nv-local h2 {
   font-size: clamp(26px, 2.6vw, 34px);
@@ -783,9 +833,9 @@
   border: 1px solid #b4c7bd40;
   border-radius: 24px;
   background:
-    radial-gradient(ellipse at 0% 0%, #91ba9d38, transparent 60%),
-    radial-gradient(ellipse at 100% 100%, #bea18335, transparent 65%),
-    linear-gradient(125deg, #3b5157, #344552 55%, #414952);
+    radial-gradient(ellipse at 12% 0%, rgb(var(--n-light-rgb) / 15%), transparent 65%),
+    radial-gradient(ellipse at 100% 100%, rgb(var(--n-blue-rgb) / 10%), transparent 70%),
+    #20323f;
 }
 #nomo-site .nv-download h2 {
   font-size: var(--type-display);
@@ -940,8 +990,7 @@
     margin-top: 32px;
   }
   #nomo-site .nv-hero-demo::before {
-    inset: -48px -30px -24px;
-    filter: blur(16px);
+    inset: -36px -20px -24px;
   }
   #nomo-site .nv-hero {
     padding-bottom: 56px;
@@ -977,7 +1026,9 @@
   #nomo-site .n-window::after,
   #nomo-site .nv-small-app,
   #nomo-site .nv-button,
-  #nomo-site .nv-feature::before {
+  #nomo-site [data-spotlight],
+  #nomo-site [data-spotlight]::before,
+  #nomo-site [data-spotlight]::after {
     transition: none;
   }
 }

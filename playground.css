@@ -31,6 +31,17 @@
 }
 #nomo-site .pg-stage {
   position: relative;
+  isolation: isolate;
+}
+#nomo-site .pg-stage::before {
+  content: "";
+  position: absolute;
+  inset: -48px -32px -40px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 46% 58% at 0% 54%, rgb(var(--n-light-rgb) / 20%), transparent 75%),
+    radial-gradient(ellipse 48% 42% at 92% 84%, rgb(var(--n-blue-rgb) / 20%), transparent 75%);
 }
 #nomo-site .pg-window {
   overflow: hidden;
