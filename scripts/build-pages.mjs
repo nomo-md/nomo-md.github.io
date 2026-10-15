@@ -59,6 +59,28 @@ const assetKinds = [
     detailEn: 'Extract the archive to get Nomo.app.',
     pattern: /^Nomo_(?:\d+\.\d+\.\d+_)?aarch64\.app\.tar\.gz$/i,
   },
+  {
+    key: 'linux-deb',
+    platform: 'linux',
+    label: 'Linux DEB 安装包',
+    labelEn: 'Linux DEB package',
+    action: '下载 DEB',
+    actionEn: 'Download DEB',
+    detail: '适用于使用 DEB 软件包的 x64 发行版。',
+    detailEn: 'For x64 distributions that use DEB packages.',
+    pattern: /^Nomo_\d+\.\d+\.\d+_amd64\.deb$/i,
+  },
+  {
+    key: 'linux-rpm',
+    platform: 'linux',
+    label: 'Linux RPM 安装包',
+    labelEn: 'Linux RPM package',
+    action: '下载 RPM',
+    actionEn: 'Download RPM',
+    detail: '适用于使用 RPM 软件包的 x64 发行版。',
+    detailEn: 'For x64 distributions that use RPM packages.',
+    pattern: /^Nomo-\d+\.\d+\.\d+-\d+\.x86_64\.rpm$/i,
+  },
 ];
 
 async function exists(target) {
@@ -179,8 +201,10 @@ function compareVersions(leftTag, rightTag) {
 }
 
 function resolveAssets(release) {
-  return assetKinds.map((kind) => {
+  const assets = assetKinds.flatMap((kind) => {
     const matches = release.assets.filter((asset) => kind.pattern.test(asset.name));
+    // 已发布的旧版本没有 Linux 包；新版本一旦提供，DEB/RPM 必须齐备。
+    if (kind.platform === 'linux' && matches.length === 0) return [];
     if (matches.length !== 1) {
       throw new Error(`${release.tag_name} 的 ${kind.label} 应有且仅有一个，实际为 ${matches.length} 个`);
     }
@@ -190,8 +214,13 @@ function resolveAssets(release) {
       throw new Error(`${asset.name} 为 ${formatBytes(asset.size)}，达到或超过 Pages 的 25 MiB 单文件限制`);
     }
 
-    return { ...asset, ...kind };
+    return [{ ...asset, ...kind }];
   });
+  const linuxAssets = assets.filter((asset) => asset.platform === 'linux');
+  if (linuxAssets.length === 1) {
+    throw new Error(`${release.tag_name} 的 Linux 安装包必须同时提供 DEB 和 RPM`);
+  }
+  return assets;
 }
 
 async function downloadAsset(asset, destination) {
@@ -230,6 +259,24 @@ function renderDownloadRows(assets, tag, platform, locale = 'zh-CN') {
         </article>`;
     })
     .join('\n');
+}
+
+function renderLinuxDownloads(assets, tag, locale = 'zh-CN') {
+  const rows = renderDownloadRows(assets, tag, 'linux', locale);
+  if (!rows) return '';
+  const english = locale === 'en-US';
+  return `
+          <section class="platform-download reveal" aria-labelledby="linux-title" id="linux">
+            <header class="platform-heading">
+              <div>
+                <h2 id="linux-title">Linux</h2>
+                <p>Linux · x64</p>
+              </div>
+            </header>
+            <div class="package-list">${rows}
+            </div>
+            <p class="platform-warning"><strong>${english ? 'Installation note' : '安装说明'}</strong> ${english ? 'Install the matching package with your system package manager to resolve runtime dependencies.' : '请使用系统包管理器安装对应格式，以便处理运行依赖。'}</p>
+          </section>`;
 }
 
 function renderReleaseHistory(notes, releases) {
@@ -363,6 +410,7 @@ async function main() {
     RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at)),
     WINDOWS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'windows'),
     MACOS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'macos'),
+    LINUX_DOWNLOADS: renderLinuxDownloads(assets, latestRelease.tag_name),
   });
 
   await renderTemplate(
@@ -373,6 +421,7 @@ async function main() {
       RELEASE_DATE: escapeHtml(formatDate(latestRelease.published_at, 'en-US')),
       WINDOWS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'windows', 'en-US'),
       MACOS_DOWNLOADS: renderDownloadRows(assets, latestRelease.tag_name, 'macos', 'en-US'),
+      LINUX_DOWNLOADS: renderLinuxDownloads(assets, latestRelease.tag_name, 'en-US'),
     },
   );
 

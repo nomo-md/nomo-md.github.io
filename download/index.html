@@ -5,13 +5,13 @@
     <meta name="theme-color" content="#26303d" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="/language.js"></script>
-    <meta name="description" content="下载最新版 Nomo，支持 Windows 10/11 与 Apple Silicon Mac。" />
+    <meta name="description" content="下载最新版 Nomo，选择适合你系统的安装包。" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:site_name" content="Nomo" />
     <meta property="og:title" content="下载 Nomo {{LATEST_TAG}}" />
-    <meta property="og:description" content="Windows 与 macOS 的最新版 Nomo 安装包。" />
+    <meta property="og:description" content="下载适合你系统的最新版 Nomo 安装包。" />
     <meta property="og:url" content="https://nomo-md.pages.dev/download/" />
     <link rel="canonical" href="https://nomo-md.pages.dev/download/" />
     <link rel="alternate" hreflang="zh-CN" href="https://nomo-md.pages.dev/download/" />
@@ -58,7 +58,7 @@
         <div class="section-heading reveal">
           <p class="eyebrow">安装与下载</p>
           <h2 id="package-title">选择你的平台。</h2>
-          <p>Windows 和 macOS 的获取方式均列于下方，可按自己的使用方式选择。</p>
+          <p>按你的操作系统和安装偏好，选择对应的获取方式。</p>
         </div>
         <div class="platform-list">
           <section class="platform-download reveal" aria-labelledby="windows-title">
@@ -106,6 +106,7 @@
             <div class="homebrew-install" id="homebrew"><h3>通过 Homebrew 安装</h3><pre><code>brew tap nomo-md/nomo https://github.com/nomo-md/nomo
 brew install --cask nomo</code></pre><button type="button" data-copy-text="brew tap nomo-md/nomo https://github.com/nomo-md/nomo&#10;brew install --cask nomo">复制命令</button></div>
           </section>
+          {{LINUX_DOWNLOADS}}
         </div>
       </section>
 
