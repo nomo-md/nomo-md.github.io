@@ -174,6 +174,7 @@ function formatDate(dateText, locale = 'zh-CN') {
 
 function prepareReleaseNote(content) {
   return content
+    .replace(/^<!-- nomo-update-summary:(?:start|end) -->\r?$/gm, '')
     .replace(/^##\s+安装包\s*$[\s\S]*$/im, '')
     .replace(
       /<img\b[^>]*\balt=["']([^"']*)["'][^>]*\bsrc=["']([^"']+)["'][^>]*\/?\s*>/gi,
@@ -210,10 +211,6 @@ function resolveAssets(release) {
     }
 
     const asset = matches[0];
-    if (asset.size >= pagesFileLimit) {
-      throw new Error(`${asset.name} 为 ${formatBytes(asset.size)}，达到或超过 Pages 的 25 MiB 单文件限制`);
-    }
-
     return [{ ...asset, ...kind }];
   });
   const linuxAssets = assets.filter((asset) => asset.platform === 'linux');
@@ -388,6 +385,11 @@ async function main() {
 
   const highlights = JSON.parse(highlightsSource);
   const assets = resolveAssets(latestRelease);
+  // Cloudflare 限制单文件 25 MiB；超限文件沿用下载路径并跳转官方资产，GitHub Pages 仍完整镜像。
+  const redirectedAssets = process.env.CF_PAGES === '1'
+    ? assets.filter((asset) => asset.size >= pagesFileLimit)
+    : [];
+  const mirroredAssets = assets.filter((asset) => !redirectedAssets.includes(asset));
   await rm(outputRoot, { recursive: true, force: true });
   await mkdir(outputRoot, { recursive: true });
 
@@ -405,10 +407,22 @@ async function main() {
     cp(path.join(projectRoot, 'motion.css'), path.join(outputRoot, 'motion.css')),
     cp(path.join(projectRoot, 'robots.txt'), path.join(outputRoot, 'robots.txt')),
     cp(path.join(projectRoot, 'sitemap.xml'), path.join(outputRoot, 'sitemap.xml')),
-    ...assets.map((asset) =>
+    ...mirroredAssets.map((asset) =>
       downloadAsset(asset, path.join(outputRoot, 'downloads', latestRelease.tag_name, asset.name)),
     ),
   ]);
+
+  if (redirectedAssets.length) {
+    const redirects = redirectedAssets.map((asset) => {
+      const destination = new URL(asset.browser_download_url);
+      if (destination.protocol !== 'https:' || destination.hostname !== 'github.com'
+        || !destination.pathname.startsWith(`/${repository}/releases/download/`)) {
+        throw new Error(`非官方安装包下载地址：${asset.name}`);
+      }
+      return `/downloads/${encodeURIComponent(latestRelease.tag_name)}/${encodeURIComponent(asset.name)} ${destination.href} 302`;
+    });
+    await writeFile(path.join(outputRoot, '_redirects'), `${redirects.join('\n')}\n`, 'utf8');
+  }
 
   // Bundle pinned motion dependencies locally so the homepage never depends on a CDN.
   await mkdir(path.join(outputRoot, 'assets', 'vendor'), { recursive: true });
